@@ -1,7 +1,11 @@
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Superhero {
-    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##", DecimalFormatSymbols.getInstance(Locale.US));
+    private Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
 
     private String heroName;
     private String privateName;
@@ -11,6 +15,36 @@ public class Superhero {
     private double strength;
 
     public Superhero() {
+        System.out.println("Enter the hero name of the superhero if there is any. Else write Null.");
+        String heroName = scanner.nextLine();
+        setHeroName(heroName);
+        System.out.println("Enter the private name of the superhero if there is any. Else write Null.");
+        String privateName = scanner.nextLine();
+        setPrivateName(privateName);
+        System.out.println("Enter the super power of the superhero.");
+        String superPower = scanner.nextLine();
+        setSuperPower(superPower);
+        System.out.println("Enter the race of the superhero.");
+        String race = scanner.nextLine();
+        setRace(race);
+        System.out.println("Enter the creation year of the superhero.");
+        int creationYear = scanner.nextInt();
+        setCreationYear(creationYear);
+        System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
+        double strength = scanner.nextDouble();
+        setStrength(strength);
+    }
+    public Superhero(String privateName) {
+        this.privateName = privateName;
+    }
+
+    public Superhero(String heroName, String privateName, String superPower, String race, int creationYear, double strength) {
+        setHeroName(heroName);
+        setPrivateName(privateName);
+        setSuperPower(superPower);
+        setRace(race);
+        setCreationYear(creationYear);
+        setStrength(strength);
     }
 
     public int getCreationYear() {
@@ -80,11 +114,11 @@ public class Superhero {
     public String toString() {
         String printSuperhero;
         if (!heroName.equals("")) {
-            printSuperhero = "%-10s: %-15s, %-15s, %-4s, 6%s\n";
+            printSuperhero = "%-15s: %-12s, %-15s, %-4s, %-6s\n";
             printSuperhero = String.format(printSuperhero, heroName, privateName,
                     superPower, creationYear, decimalFormat.format(strength));
         } else {
-            printSuperhero = "%-10s: %-15s, %-15s, %-4s, 6%s\n";
+            printSuperhero = "%-12s, %-15s, %-4s, %-6s\n";
             printSuperhero = String.format(printSuperhero, privateName,
                     superPower, creationYear, decimalFormat.format(strength));
         }

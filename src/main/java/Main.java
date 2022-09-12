@@ -1,46 +1,50 @@
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+
 public class Main {
-    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    private boolean exit = false;
     private Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
 
     public static void main(String[] args) {
         Main main = new Main();
+        Database database = new Database();
+        main.menuOptions(database);
+    }
+
+    public void creationLoop(Database database) {
+        while (!exit) {
+            Superhero superhero = createSuperhero();
+            database.addSuperhero(superhero);
+            System.out.println("Would you like to save? yes or no?");
+            String answer = scanner.nextLine();
+            if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
+                database.writeSuperheroDatabase(database.getFILENAME());
+            }
+        }
+    }
+
+    public Superhero createSuperhero() {
         Superhero superhero = new Superhero();
-        main.addSuperheroes(superhero);
-        main.printSuperhero(superhero);
+        return superhero;
     }
 
-    public void addSuperheroes(Superhero superhero) {
-        //Superhero superhero = new Superhero();
-        System.out.println("Enter the superhero name of the superhero if there is any. Else write Null.");
-        String superheroName = scanner.nextLine();
-        superhero.setHeroName(superheroName);
-        System.out.println("Enter the private name of the superhero if there is any. Else write Null.");
-        String privateName = scanner.nextLine();
-        superhero.setPrivateName(privateName);
-        System.out.println("Enter the super power of the superhero.");
-        String superPower = scanner.nextLine();
-        superhero.setSuperPower(superPower);
-        System.out.println("Enter the race of the superhero.");
-        String race = scanner.nextLine();
-        superhero.setRace(race);
-        System.out.println("Enter the creation year of the superhero.");
-        int creationYear = scanner.nextInt();
-        superhero.setCreationYear(creationYear);
-        System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
-        double strength = scanner.nextDouble();
-        superhero.setStrength(strength);
-    }
-
-    /*public void printSuperheroes(Database database) {
-        System.out.printf(database);
-    }*/
-
-    public void printSuperhero (Superhero superhero) {
-        System.out.printf(superhero.toString());
+    public void menuOptions(Database database) {
+        while (!exit) {
+            System.out.println("Welcome to the superhero universe.\n1. Create new superhero.\n2. Print database.\n9. Exit.");
+            String options = scanner.nextLine();
+            switch (options) {
+                case "1":
+                    creationLoop(database);
+                    break;
+                case "2":
+                    System.out.println(database);
+                case "9":
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("This input was not valid please try again.");
+                    break;
+            }
+        }
     }
 }
