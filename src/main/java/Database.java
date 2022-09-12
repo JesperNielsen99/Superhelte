@@ -5,7 +5,6 @@ public class Database {
     private List<Superhero> superheroes;
 
     public Database() {
-        superheroes = new List<Superheroes>;
     }
 
     public void addSuperhero(Superhero superhero) {
@@ -19,9 +18,10 @@ public class Database {
     }
 
     public void deleteSuperhero(Superhero superhero) {
+        superheroes.remove(superhero);
     }
 
     public void deleteSuperheroes() {
-
+        superheroes.clear();
     }
 }
