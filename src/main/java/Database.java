@@ -23,11 +23,11 @@ public class Database {
         }
     }
 
-    public void deleteSuperhero(Superhero superhero) {
-        superheroes.remove(superhero);
+    public void deleteSuperhero(int heroNumber) {
+        superheroes.remove(heroNumber);
     }
 
-    public void deleteSuperheroes() {
+    public void clearDatabase() {
         superheroes.clear();
     }
 
@@ -91,6 +91,14 @@ public class Database {
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+        }
+    }
+
+    public void getDatabaseNumbers() {
+        for (int i = 0; i < superheroes.size(); i++) {
+            String heroName = superheroes.get(i).getHeroName();
+            String privateName = superheroes.get(i).getPrivateName();
+            System.out.println(String.format("%s: %s, %s", i, heroName, privateName));
         }
     }
 

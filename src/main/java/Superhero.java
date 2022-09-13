@@ -25,7 +25,7 @@ public class Superhero {
         String superPower = scanner.nextLine();
         setSuperPower(superPower);
         System.out.println("Enter the race of the superhero.");
-        String race = scanner.nextLine();
+        String race = scanner.next();
         setRace(race);
         System.out.println("Enter the creation year of the superhero.");
         int creationYear = scanner.nextInt();
@@ -80,11 +80,7 @@ public class Superhero {
     }
 
     public void setPrivateName(String privateName) {
-        if (!privateName.equals("Null")) {
-            this.privateName = privateName;
-        } else {
-            this.privateName = "";
-        }
+        this.privateName = privateName;
     }
 
     public String getSuperPower() {
@@ -114,13 +110,11 @@ public class Superhero {
     public String toString() {
         String printSuperhero;
         if (!heroName.equals("")) {
-            printSuperhero = "%-15s: %-12s, %-15s, %-4s, %-6s\n";
-            printSuperhero = String.format(printSuperhero, heroName, privateName,
-                    superPower, creationYear, decimalFormat.format(strength));
+            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================\n",
+            heroName, privateName, superPower,creationYear,race,strength);
         } else {
-            printSuperhero = "%-12s, %-15s, %-4s, %-6s\n";
-            printSuperhero = String.format(printSuperhero, privateName,
-                    superPower, creationYear, decimalFormat.format(strength));
+            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================\n",
+                    privateName, superPower,creationYear,race,strength);
         }
         return printSuperhero;
     }
