@@ -1,11 +1,9 @@
 import java.io.*;
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class Database {
-    private List<Superhero> superheroes;
-    private static String FILENAME = "Heroes.txt";
-    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    private final List<Superhero> superheroes;
+    private final String FILENAME = "Heroes.txt";
 
     public Database() {
         superheroes = new ArrayList<>();
@@ -15,12 +13,6 @@ public class Database {
 
     public void addSuperhero(Superhero superhero) {
         superheroes.add(superhero);
-    }
-
-    public void addSuperheroes(List<Superhero> superheroes) {
-        for (int i = 0; i < superheroes.size(); i++) {
-            this.superheroes.add(superheroes.get(i));
-        }
     }
 
     public void deleteSuperhero(int heroNumber) {
@@ -53,21 +45,21 @@ public class Database {
                 String[] superheroes = heroScanner.nextLine().split(",");
                 Superhero superhero = new Superhero(null);
                 switch (superheroes.length) {
-                    case (5):
+                    case (5) -> {
                         superhero.setPrivateName(superheroes[0]);
                         superhero.setSuperPower(superheroes[1]);
                         superhero.setRace(superheroes[2]);
                         superhero.setCreationYear(Integer.parseInt(superheroes[3]));
                         superhero.setStrength(Double.parseDouble(superheroes[4]));
-                        break;
-                    case (6):
+                    }
+                    case (6) -> {
                         superhero.setHeroName(superheroes[0]);
                         superhero.setPrivateName(superheroes[1]);
                         superhero.setSuperPower(superheroes[2]);
                         superhero.setRace(superheroes[3]);
                         superhero.setCreationYear(Integer.parseInt(superheroes[4]));
                         superhero.setStrength(Double.parseDouble(superheroes[5]));
-                        break;
+                    }
                 }
                 addSuperhero(superhero);
             }
@@ -81,10 +73,10 @@ public class Database {
     public void writeSuperheroDatabase(String fileName) {
         try {
             FileWriter Writer = new FileWriter(fileName);
-            for (int i = 0; i < superheroes.size(); i++) {
-                Writer.write(superheroes.get(i).getHeroName() + "," + superheroes.get(i).getPrivateName() + "," +
-                        superheroes.get(i).getSuperPower() + "," + superheroes.get(i).getRace() + "," +
-                        superheroes.get(i).getCreationYear() + "," + superheroes.get(i).getStrength() + "\n");
+            for (Superhero superhero : superheroes) {
+                Writer.write(superhero.getHeroName() + "," + superhero.getPrivateName() + "," +
+                        superhero.getSuperPower() + "," + superhero.getRace() + "," +
+                        superhero.getCreationYear() + "," + superhero.getStrength() + "\n");
             }
             Writer.close();
             System.out.println("Successfully saved to file.");
@@ -94,28 +86,108 @@ public class Database {
         }
     }
 
+    public void searchHeroName(String heroName) {
+        int heroes = 0;
+        for (int i = 0; i < superheroes.size(); i++) {
+            if (superheroes.get(i).getHeroName().equals(heroName)){
+                System.out.printf("%s: %s", i, superheroes.get(i));
+                heroes++;
+            }
+        }
+        if (heroes == 0) {
+            System.out.println("No hero was found with this search.");
+        }
+    }
+    public void searchPartHeroName(String heroName) {
+        int heroes = 0;
+        int heroNameLength = heroName.length();
+        for (int i = 0; i < superheroes.size(); i++) {
+            String partHeroName = superheroes.get(i).getHeroName().substring(0,heroNameLength);
+            if (partHeroName.equalsIgnoreCase(heroName.substring(0,heroNameLength))){
+                System.out.printf("%s: %s", i, superheroes.get(i));
+                heroes++;
+            }
+        }
+        if (heroes == 0) {
+            System.out.println("No hero was found with this search.");
+        }
+    }
+    public void searchPrivateName(String privateName) {
+        int heroes = 0;
+        for (int i = 0; i < superheroes.size(); i++) {
+            if (superheroes.get(i).getPrivateName().equals(privateName)){
+                System.out.printf("%s: %s", i, superheroes.get(i));
+                heroes++;
+            }
+        }
+        if (heroes == 0) {
+            System.out.println("No hero was found with this search.");
+        }
+    }
+    public void searchPartPrivateName(String privateName) {
+        int heroes = 0;
+        int privateNameLength = privateName.length();
+        for (int i = 0; i < superheroes.size(); i++) {
+            String partPrivateName = superheroes.get(i).getPrivateName().substring(0,privateNameLength);
+            if (partPrivateName.equalsIgnoreCase(privateName.substring(0,privateNameLength))){
+                System.out.printf("%s: %s", i, superheroes.get(i));
+                heroes++;
+            }
+        }
+        if (heroes == 0) {
+            System.out.println("No hero was found with this search.");
+        }
+    }
+
+    public void searchRace(String race) {
+        int heroes = 0;
+        for (int i = 0; i < superheroes.size(); i++) {
+            if (superheroes.get(i).getRace().equals(race)){
+                System.out.printf("%s: %s", i, superheroes.get(i));
+                heroes++;
+            }
+        }
+        if (heroes == 0) {
+            System.out.println("No hero was found with this search.");
+        }
+    }
+
+    public void searchPartRace(String race) {
+        int heroes = 0;
+        int raceLength = race.length();
+        for (int i = 0; i < superheroes.size(); i++) {
+            String partRace = superheroes.get(i).getRace().substring(0,raceLength);
+            if (partRace.equalsIgnoreCase(race.substring(0,raceLength))){
+                System.out.printf("%s: %s", i, superheroes.get(i));
+                heroes++;
+            }
+        }
+        if (heroes == 0) {
+            System.out.println("No hero was found with this search.");
+        }
+    }
+
     public void getDatabaseNumbers() {
         for (int i = 0; i < superheroes.size(); i++) {
             String heroName = superheroes.get(i).getHeroName();
             String privateName = superheroes.get(i).getPrivateName();
-            System.out.println(String.format("%s: %s, %s", i, heroName, privateName));
+            System.out.printf("%s: %s, %s", i, heroName, privateName);
         }
     }
 
     public String getDatabaseString() {
         if (superheroes.size() > 0) {
-            String databaseString = "";
-            for (int i = 0; i < superheroes.size(); i++) {
-                databaseString += superheroes.get(i).toString();
+            StringBuilder databaseString = new StringBuilder();
+            for (Superhero superhero : superheroes) {
+                databaseString.append(superhero.toString());
             }
-            return databaseString;
+            return databaseString.toString();
         } else {
             return "The database is empty.";
         }
     }
 
     public String toString() {
-        String printSuperheroes = "\nList of Superheroes: \n-----------------\n" + getDatabaseString();
-        return printSuperheroes;
+        return ("\nList of Superheroes: \n-----------------\n" + getDatabaseString());
     }
 }

@@ -1,11 +1,7 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Superhero {
-    private DecimalFormat decimalFormat = new DecimalFormat("#.##", DecimalFormatSymbols.getInstance(Locale.US));
-    private Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
 
     private String heroName;
     private String privateName;
@@ -16,6 +12,7 @@ public class Superhero {
 
     public Superhero() {
         System.out.println("Enter the hero name of the superhero if there is any. Else write Null.");
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
         String heroName = scanner.nextLine();
         setHeroName(heroName);
         System.out.println("Enter the private name of the superhero if there is any. Else write Null.");
@@ -38,14 +35,14 @@ public class Superhero {
         this.privateName = privateName;
     }
 
-    public Superhero(String heroName, String privateName, String superPower, String race, int creationYear, double strength) {
+    /*public Superhero(String heroName, String privateName, String superPower, String race, int creationYear, double strength) {
         setHeroName(heroName);
         setPrivateName(privateName);
         setSuperPower(superPower);
         setRace(race);
         setCreationYear(creationYear);
         setStrength(strength);
-    }
+    }*/
 
     public int getCreationYear() {
         return creationYear;
