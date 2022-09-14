@@ -68,14 +68,11 @@ public class Main {
                 case "2":
                     System.out.println(database);
                     break;
-                case "3"://Add searching for private name, creation year and race.
+                case "3":
                     System.out.println("""
                             1. Search by the full superhero name.
-                            2. Search by part of the superhero name.
-                            3. Search by the full private name of the superhero.
-                            4. Search by part of the private name of the superhero.
-                            5. Search by full race of the superhero.
-                            6. Search by part of the race of the superhero.
+                            2. Search by the full private name of the superhero.
+                            3. Search by full race of the superhero.
                             8. Don't search anyway.
                             9. Exit.""");
                     options = SCANNER.next();
@@ -86,42 +83,39 @@ public class Main {
                             database.searchHeroName(options);
                         }
                         case "2" -> {
-                            System.out.println("Enter part of the superhero name to search for.");
-                            options = SCANNER.next();
-                            database.searchPartHeroName(options);
-                        }
-                        case "3" -> {
                             System.out.println("Enter the private name of the superhero to search for.");
                             options = SCANNER.next();
                             database.searchPrivateName(options);
                         }
-                        case "4" -> {
-                            System.out.println("Enter part of the private name of the superhero to search for.");
-                            options = SCANNER.next();
-                            database.searchPartPrivateName(options);
-                        }
-                        case "5" -> {
+                        case "3" -> {
                             System.out.println("Enter the Race of the superhero to search for.");
                             options = SCANNER.next();
                             database.searchRace(options);
-                        }
-                        case "6" -> {
-                            System.out.println("Enter part of the Race of the superhero to search for.");
-                            options = SCANNER.next();
-                            database.searchPartRace(options);
                         }
                         case "8" -> System.out.println("Returning to the main menu.\n");
                         case "9" -> System.exit(0);
                         default -> System.out.println("This input was not valid please try again.\n");
                     }
                     break;
-                case "4":
-                    //Add an update feature for a superhero's parameters.
+                case "4": //Add an update feature for a superhero's parameters.
+                    System.out.println("Enter the number of the superhero you want to delete.");
+                    database.getDatabaseNumbers();
+                    int heroNumber = SCANNER.nextInt();
+                    System.out.print("""
+                            1. Update hero name.
+                            2. Update private name.
+                            3. Add super powers.
+                            4. Remove Super powers.
+                            5. Update race.
+                            6. Update strength.\n""");
+                    int heroAttribute = SCANNER.nextInt();
+                    database.updateSuperhero(database.getSuperhero(heroNumber),heroAttribute);
+                    database.writeSuperheroDatabase(database.getFILENAME());
                     break;
                 case "5":
                     System.out.println("Enter the number of the superhero you want to delete.");
                     database.getDatabaseNumbers();
-                    int heroNumber = SCANNER.nextInt();
+                    heroNumber = SCANNER.nextInt();
                     database.deleteSuperhero(heroNumber);
                     updateCheck(database);
                     break;

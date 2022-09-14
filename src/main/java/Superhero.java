@@ -1,5 +1,4 @@
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Superhero {
 
@@ -34,15 +33,6 @@ public class Superhero {
     public Superhero(String privateName) {
         this.privateName = privateName;
     }
-
-    /*public Superhero(String heroName, String privateName, String superPower, String race, int creationYear, double strength) {
-        setHeroName(heroName);
-        setPrivateName(privateName);
-        setSuperPower(superPower);
-        setRace(race);
-        setCreationYear(creationYear);
-        setStrength(strength);
-    }*/
 
     public int getCreationYear() {
         return creationYear;
@@ -86,6 +76,30 @@ public class Superhero {
 
     public void setSuperPower(String superPower) {
         this.superPower = superPower;
+    }
+
+    public void addSuperPower(String superPower) {
+        this.superPower += superPower;
+    }
+
+    public void removeSuperPower(int superPower) {
+        String[] powers = getSuperPower().split("((?<=\\.))");
+        String power = powers[superPower].replace(powers[superPower], "");
+        powers[superPower] = power;
+        String superPowers = "";
+        for (int i = 0; i < powers.length; i++) {
+            superPowers += powers[i];
+        }
+        setSuperPower(superPowers);
+        presentSuperPowers();
+    }
+
+    public void presentSuperPowers() {
+        String[] powers = getSuperPower().split("\\.");
+        for (int i = 0; i < powers.length; i++) {
+            System.out.printf("%s: %s\n", i, powers[i]);
+        }
+        System.out.println("\n");
     }
 
     public double getStrength() {

@@ -27,6 +27,10 @@ public class Database {
         return FILENAME;
     }
 
+    public Superhero getSuperhero(int heroNumber) {
+        return superheroes.get(heroNumber);
+    }
+
     public void checkSuperheroDatabase(String fileName) {
         try {
             File myObj = new File(fileName);
@@ -89,81 +93,90 @@ public class Database {
     public void searchHeroName(String heroName) {
         int heroes = 0;
         for (int i = 0; i < superheroes.size(); i++) {
-            if (superheroes.get(i).getHeroName().equals(heroName)){
+            if (superheroes.get(i).getHeroName().toLowerCase().contains(heroName.toLowerCase())){
                 System.out.printf("%s: %s", i, superheroes.get(i));
                 heroes++;
             }
         }
         if (heroes == 0) {
             System.out.println("No hero was found with this search.");
+        } else {
+            System.out.printf("%s super heroes were found, that fit your search.\n", heroes);
         }
     }
-    public void searchPartHeroName(String heroName) {
-        int heroes = 0;
-        int heroNameLength = heroName.length();
-        for (int i = 0; i < superheroes.size(); i++) {
-            String partHeroName = superheroes.get(i).getHeroName().substring(0,heroNameLength);
-            if (partHeroName.equalsIgnoreCase(heroName.substring(0,heroNameLength))){
-                System.out.printf("%s: %s", i, superheroes.get(i));
-                heroes++;
-            }
-        }
-        if (heroes == 0) {
-            System.out.println("No hero was found with this search.");
-        }
-    }
+
     public void searchPrivateName(String privateName) {
         int heroes = 0;
         for (int i = 0; i < superheroes.size(); i++) {
-            if (superheroes.get(i).getPrivateName().equals(privateName)){
+            if (superheroes.get(i).getPrivateName().toLowerCase().contains(privateName.toLowerCase())){
                 System.out.printf("%s: %s", i, superheroes.get(i));
                 heroes++;
             }
         }
         if (heroes == 0) {
             System.out.println("No hero was found with this search.");
-        }
-    }
-    public void searchPartPrivateName(String privateName) {
-        int heroes = 0;
-        int privateNameLength = privateName.length();
-        for (int i = 0; i < superheroes.size(); i++) {
-            String partPrivateName = superheroes.get(i).getPrivateName().substring(0,privateNameLength);
-            if (partPrivateName.equalsIgnoreCase(privateName.substring(0,privateNameLength))){
-                System.out.printf("%s: %s", i, superheroes.get(i));
-                heroes++;
-            }
-        }
-        if (heroes == 0) {
-            System.out.println("No hero was found with this search.");
+        } else {
+            System.out.printf("%s super heroes were found, that fit your search.\n", heroes);
         }
     }
 
     public void searchRace(String race) {
         int heroes = 0;
+        boolean properRace = false;
         for (int i = 0; i < superheroes.size(); i++) {
-            if (superheroes.get(i).getRace().equals(race)){
+            if (superheroes.get(i).getRace().equalsIgnoreCase(race))  {
+                System.out.printf("%s: %s", i, superheroes.get(i));
+                heroes++;
+                properRace = true;
+            } else if (superheroes.get(i).getRace().toLowerCase().contains(race.toLowerCase())){
                 System.out.printf("%s: %s", i, superheroes.get(i));
                 heroes++;
             }
         }
         if (heroes == 0) {
             System.out.println("No hero was found with this search.");
+        } else if (heroes > 0 && properRace) {
+            System.out.printf("There is %s superheroes of the race %s\n", heroes, race);
         }
     }
 
-    public void searchPartRace(String race) {
-        int heroes = 0;
-        int raceLength = race.length();
-        for (int i = 0; i < superheroes.size(); i++) {
-            String partRace = superheroes.get(i).getRace().substring(0,raceLength);
-            if (partRace.equalsIgnoreCase(race.substring(0,raceLength))){
-                System.out.printf("%s: %s", i, superheroes.get(i));
-                heroes++;
-            }
-        }
-        if (heroes == 0) {
-            System.out.println("No hero was found with this search.");
+    public void updateSuperhero(Superhero superhero, int option) {
+        Scanner heroScanner = new Scanner(System.in).useLocale(Locale.US);
+        int heroInt = 0;
+        String heroString = "";
+        switch (option) {
+            case 1:
+                System.out.printf("Enter the new superhero name for %s", superhero.getHeroName());
+                heroString = heroScanner.nextLine();
+                superhero.setHeroName(heroString);
+                break;
+            case 2:
+                System.out.printf("Enter the new private name for %s", superhero.getHeroName());
+                heroString = heroScanner.nextLine();
+                superhero.setPrivateName(heroString);
+                break;
+            case 3:
+                System.out.printf("Enter a new super power name for %s", superhero.getHeroName());
+                heroString = heroScanner.nextLine();
+                superhero.addSuperPower(heroString);
+                break;
+            case 4:
+                System.out.printf("Choose a superpower to remove from %s", superhero.getHeroName());
+                superhero.presentSuperPowers();
+                heroInt = heroScanner.nextInt();
+                superhero.removeSuperPower(heroInt);
+                System.out.println(superhero);
+                break;
+            case 5:
+                System.out.printf("Enter a new race for %s", superhero.getHeroName());
+                heroString = heroScanner.nextLine();
+                superhero.setRace(heroString);
+                break;
+            case 6:
+                System.out.printf("Enter a new strength for %s", superhero.getHeroName());
+                double heroDouble = heroScanner.nextDouble();
+                superhero.setStrength(heroDouble);
+                break;
         }
     }
 
@@ -171,7 +184,7 @@ public class Database {
         for (int i = 0; i < superheroes.size(); i++) {
             String heroName = superheroes.get(i).getHeroName();
             String privateName = superheroes.get(i).getPrivateName();
-            System.out.printf("%s: %s, %s", i, heroName, privateName);
+            System.out.printf("%s: %s, %s\n", i, heroName, privateName);
         }
     }
 
