@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Database {
+    private final Scanner SCANNER = new Scanner(System.in).useLocale(Locale.US);
     private final List<Superhero> superheroes;
     private final String FILENAME = "Heroes.txt";
 
@@ -17,6 +18,7 @@ public class Database {
 
     public void deleteSuperhero(int heroNumber) {
         superheroes.remove(heroNumber);
+        updateCheck();
     }
 
     public void clearDatabase() {
@@ -90,94 +92,34 @@ public class Database {
         }
     }
 
-    public void searchHeroName(String heroName) {
-        int heroes = 0;
-        for (int i = 0; i < superheroes.size(); i++) {
-            if (superheroes.get(i).getHeroName().toLowerCase().contains(heroName.toLowerCase())){
-                System.out.printf("%s: %s", i, superheroes.get(i));
-                heroes++;
+    public ArrayList<Superhero> searchHeroName(String heroName) {
+        ArrayList<Superhero> heroList = new ArrayList<>();
+        for (Superhero superhero : superheroes) {
+            if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
+                heroList.add(superhero);
             }
         }
-        if (heroes == 0) {
-            System.out.println("No hero was found with this search.");
-        } else {
-            System.out.printf("%s super heroes were found, that fit your search.\n", heroes);
-        }
+        return heroList;
     }
 
-    public void searchPrivateName(String privateName) {
-        int heroes = 0;
-        for (int i = 0; i < superheroes.size(); i++) {
-            if (superheroes.get(i).getPrivateName().toLowerCase().contains(privateName.toLowerCase())){
-                System.out.printf("%s: %s", i, superheroes.get(i));
-                heroes++;
+    public ArrayList<Superhero> searchPrivateName(String privateName) {
+        ArrayList<Superhero> heroList = new ArrayList<>();
+        for (Superhero superhero : superheroes) {
+            if (superhero.getPrivateName().toLowerCase().contains(privateName.toLowerCase())) {
+                heroList.add(superhero);
             }
         }
-        if (heroes == 0) {
-            System.out.println("No hero was found with this search.");
-        } else {
-            System.out.printf("%s super heroes were found, that fit your search.\n", heroes);
-        }
+        return heroList;
     }
 
-    public void searchRace(String race) {
-        int heroes = 0;
-        boolean properRace = false;
-        for (int i = 0; i < superheroes.size(); i++) {
-            if (superheroes.get(i).getRace().equalsIgnoreCase(race))  {
-                System.out.printf("%s: %s", i, superheroes.get(i));
-                heroes++;
-                properRace = true;
-            } else if (superheroes.get(i).getRace().toLowerCase().contains(race.toLowerCase())){
-                System.out.printf("%s: %s", i, superheroes.get(i));
-                heroes++;
+    public ArrayList<Superhero> searchRace(String race) {
+        ArrayList<Superhero> heroList = new ArrayList<>();
+        for (Superhero superhero : superheroes) {
+            if (superhero.getRace().toLowerCase().contains(race.toLowerCase())) {
+                heroList.add(superhero);
             }
         }
-        if (heroes == 0) {
-            System.out.println("No hero was found with this search.");
-        } else if (heroes > 0 && properRace) {
-            System.out.printf("There is %s superheroes of the race %s\n", heroes, race);
-        }
-    }
-
-    public void updateSuperhero(Superhero superhero, int option) {
-        Scanner heroScanner = new Scanner(System.in).useLocale(Locale.US);
-        int heroInt = 0;
-        String heroString = "";
-        switch (option) {
-            case 1:
-                System.out.printf("Enter the new superhero name for %s", superhero.getHeroName());
-                heroString = heroScanner.nextLine();
-                superhero.setHeroName(heroString);
-                break;
-            case 2:
-                System.out.printf("Enter the new private name for %s", superhero.getHeroName());
-                heroString = heroScanner.nextLine();
-                superhero.setPrivateName(heroString);
-                break;
-            case 3:
-                System.out.printf("Enter a new super power name for %s", superhero.getHeroName());
-                heroString = heroScanner.nextLine();
-                superhero.addSuperPower(heroString);
-                break;
-            case 4:
-                System.out.printf("Choose a superpower to remove from %s", superhero.getHeroName());
-                superhero.presentSuperPowers();
-                heroInt = heroScanner.nextInt();
-                superhero.removeSuperPower(heroInt);
-                System.out.println(superhero);
-                break;
-            case 5:
-                System.out.printf("Enter a new race for %s", superhero.getHeroName());
-                heroString = heroScanner.nextLine();
-                superhero.setRace(heroString);
-                break;
-            case 6:
-                System.out.printf("Enter a new strength for %s", superhero.getHeroName());
-                double heroDouble = heroScanner.nextDouble();
-                superhero.setStrength(heroDouble);
-                break;
-        }
+        return heroList;
     }
 
     public void getDatabaseNumbers() {
@@ -188,19 +130,59 @@ public class Database {
         }
     }
 
-    public String getDatabaseString() {
+    public void updateCheck() {
+        System.out.println("Would you like to save? yes or no?");
+        String answer = SCANNER.next();
+        if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
+            System.out.println("Updating the Database.");
+            writeSuperheroDatabase(getFILENAME());
+            System.out.println("Update Complete.");
+        } else {
+            System.out.println("The database will not be updates.");
+        }
+    }
+
+    public void deleteDatabaseCheck() {
+        System.out.println("Be careful you are about to delete the ENTIRE database.\nDo you wish to continue?");
+        String answer = SCANNER.next();
+        if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
+            System.out.println("Are you sure you want to save and delete the database permanently?");
+            answer = SCANNER.next();
+            if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
+                System.out.println("Deleting the Database.");
+                clearDatabase();
+                writeSuperheroDatabase(getFILENAME());
+                System.out.println("Deletion Complete.");
+            }
+        } else {
+            System.out.println("The database will not be updates.");
+        }
+        creationLoop();
+    }
+
+    public int getSize() {
+        if (superheroes.size() > 0) {
+            return superheroes.size();
+        } else {
+            return 0;
+        }
+    }
+
+    public void creationLoop() {
+        Superhero superhero = new Superhero();
+        addSuperhero(superhero);
+        updateCheck();
+    }
+
+    public String toString() {
         if (superheroes.size() > 0) {
             StringBuilder databaseString = new StringBuilder();
             for (Superhero superhero : superheroes) {
                 databaseString.append(superhero.toString());
             }
-            return databaseString.toString();
+            return ("\nList of Superheroes: \n-----------------\n" + databaseString);
         } else {
             return "The database is empty.";
         }
-    }
-
-    public String toString() {
-        return ("\nList of Superheroes: \n-----------------\n" + getDatabaseString());
     }
 }

@@ -86,11 +86,11 @@ public class Superhero {
         String[] powers = getSuperPower().split("((?<=\\.))");
         String power = powers[superPower].replace(powers[superPower], "");
         powers[superPower] = power;
-        String superPowers = "";
-        for (int i = 0; i < powers.length; i++) {
-            superPowers += powers[i];
+        StringBuilder superPowers = new StringBuilder();
+        for (String pow : powers) {
+            superPowers.append(pow);
         }
-        setSuperPower(superPowers);
+        setSuperPower(superPowers.toString());
         presentSuperPowers();
     }
 
@@ -121,10 +121,10 @@ public class Superhero {
     public String toString() {
         String printSuperhero;
         if (!heroName.equals("")) {
-            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================\n",
+            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================",
             heroName, privateName, superPower,creationYear,race,strength);
         } else {
-            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================\n",
+            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================",
                     privateName, superPower,creationYear,race,strength);
         }
         return printSuperhero;
