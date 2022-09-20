@@ -29,10 +29,6 @@ public class Database {
         return FILENAME;
     }
 
-    public Superhero getSuperhero(int heroNumber) {
-        return superheroes.get(heroNumber);
-    }
-
     public void checkSuperheroDatabase(String fileName) {
         try {
             File myObj = new File(fileName);
@@ -97,8 +93,10 @@ public class Database {
         for (Superhero superhero : superheroes) {
             if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
                 heroList.add(superhero);
+                System.out.println(superhero);
             }
         }
+        System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
         return heroList;
     }
 
@@ -107,8 +105,10 @@ public class Database {
         for (Superhero superhero : superheroes) {
             if (superhero.getPrivateName().toLowerCase().contains(privateName.toLowerCase())) {
                 heroList.add(superhero);
+                System.out.println(superhero);
             }
         }
+        System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
         return heroList;
     }
 
@@ -117,29 +117,17 @@ public class Database {
         for (Superhero superhero : superheroes) {
             if (superhero.getRace().toLowerCase().contains(race.toLowerCase())) {
                 heroList.add(superhero);
+                System.out.println(superhero);
             }
         }
+        System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
         return heroList;
     }
 
-    public void getDatabaseNumbers() {
-        for (int i = 0; i < superheroes.size(); i++) {
-            String heroName = superheroes.get(i).getHeroName();
-            String privateName = superheroes.get(i).getPrivateName();
-            System.out.printf("%s: %s, %s\n", i, heroName, privateName);
-        }
-    }
-
     public void updateCheck() {
-        System.out.println("Would you like to save? yes or no?");
-        String answer = SCANNER.next();
-        if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
-            System.out.println("Updating the Database.");
-            writeSuperheroDatabase(getFILENAME());
-            System.out.println("Update Complete.");
-        } else {
-            System.out.println("The database will not be updates.");
-        }
+        System.out.println("Updating the Database.");
+        writeSuperheroDatabase(getFILENAME());
+        System.out.println("Update Complete.");
     }
 
     public void deleteDatabaseCheck() {

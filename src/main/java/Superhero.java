@@ -24,12 +24,11 @@ public class Superhero {
         String race = scanner.next();
         setRace(race);
         System.out.println("Enter the creation year of the superhero.");
-        int creationYear = scanner.nextInt();
-        setCreationYear(creationYear);
+        setCreationYear(parseAsInt(scanner));
         System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
-        double strength = scanner.nextDouble();
-        setStrength(strength);
+        setStrength(parseAsDouble(scanner));
     }
+
     public Superhero(String privateName) {
         this.privateName = privateName;
     }
@@ -116,6 +115,34 @@ public class Superhero {
         } else {
             this.strength = 0;
         }
+    }
+
+    public int parseAsInt(Scanner scanner) {
+        boolean exit = false;
+        while (!exit) {
+            try {
+                int integer = Integer.parseInt(scanner.nextLine());
+                exit = true;
+                return integer;
+            } catch (NumberFormatException e) {
+                System.out.println("You did not enter a number. Please re-enter it.");
+            }
+        }
+        return 0;
+    }
+
+    public double parseAsDouble(Scanner scanner) {
+        boolean exit = false;
+        while (!exit) {
+            try {
+                double number = Double.parseDouble(scanner.nextLine());
+                exit = true;
+                return number;
+            } catch (NumberFormatException e) {
+                System.out.println("You did not enter a number. Please re-enter it.");
+            }
+        }
+        return 0;
     }
 
     public String toString() {
