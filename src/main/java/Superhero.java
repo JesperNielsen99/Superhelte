@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Superhero {
 
     private String heroName;
@@ -10,27 +8,19 @@ public class Superhero {
     private double strength;
 
     public Superhero() {
-        System.out.println("Enter the hero name of the superhero if there is any. Else write Null.");
-        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
-        String heroName = scanner.nextLine();
-        setHeroName(heroName);
-        System.out.println("Enter the private name of the superhero if there is any. Else write Null.");
-        String privateName = scanner.nextLine();
-        setPrivateName(privateName);
-        System.out.println("Enter the super power of the superhero.");
-        String superPower = scanner.nextLine();
-        setSuperPower(superPower);
-        System.out.println("Enter the race of the superhero.");
-        String race = scanner.next();
-        setRace(race);
-        System.out.println("Enter the creation year of the superhero.");
-        setCreationYear(parseAsInt(scanner));
-        System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
-        setStrength(parseAsDouble(scanner));
     }
 
     public Superhero(String privateName) {
         this.privateName = privateName;
+    }
+
+    public Superhero(String heroName, String privateName, String race) {
+        this.heroName = heroName;
+        this.privateName = privateName;
+        this.superPower = "none";
+        this.race = race;
+        this.creationYear = 2000;
+        this.strength = 5000;
     }
 
     public int getCreationYear() {
@@ -115,34 +105,6 @@ public class Superhero {
         } else {
             this.strength = 0;
         }
-    }
-
-    public int parseAsInt(Scanner scanner) {
-        boolean exit = false;
-        while (!exit) {
-            try {
-                int integer = Integer.parseInt(scanner.nextLine());
-                exit = true;
-                return integer;
-            } catch (NumberFormatException e) {
-                System.out.println("You did not enter a number. Please re-enter it.");
-            }
-        }
-        return 0;
-    }
-
-    public double parseAsDouble(Scanner scanner) {
-        boolean exit = false;
-        while (!exit) {
-            try {
-                double number = Double.parseDouble(scanner.nextLine());
-                exit = true;
-                return number;
-            } catch (NumberFormatException e) {
-                System.out.println("You did not enter a number. Please re-enter it.");
-            }
-        }
-        return 0;
     }
 
     public String toString() {

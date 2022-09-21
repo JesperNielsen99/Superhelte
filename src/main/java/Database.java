@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Database {
     private final Scanner SCANNER = new Scanner(System.in).useLocale(Locale.US);
-    private final List<Superhero> superheroes;
+    private final ArrayList<Superhero> superheroes;
     private final String FILENAME = "Heroes.txt";
 
     public Database() {
@@ -18,11 +18,6 @@ public class Database {
 
     public void deleteSuperhero(int heroNumber) {
         superheroes.remove(heroNumber);
-        updateCheck();
-    }
-
-    public void clearDatabase() {
-        superheroes.clear();
     }
 
     public String getFILENAME() {
@@ -124,42 +119,12 @@ public class Database {
         return heroList;
     }
 
-    public void updateCheck() {
-        System.out.println("Updating the Database.");
-        writeSuperheroDatabase(getFILENAME());
-        System.out.println("Update Complete.");
-    }
-
-    public void deleteDatabaseCheck() {
-        System.out.println("Be careful you are about to delete the ENTIRE database.\nDo you wish to continue?");
-        String answer = SCANNER.next();
-        if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
-            System.out.println("Are you sure you want to save and delete the database permanently?");
-            answer = SCANNER.next();
-            if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
-                System.out.println("Deleting the Database.");
-                clearDatabase();
-                writeSuperheroDatabase(getFILENAME());
-                System.out.println("Deletion Complete.");
-            }
-        } else {
-            System.out.println("The database will not be updates.");
-        }
-        creationLoop();
-    }
-
     public int getSize() {
-        if (superheroes.size() > 0) {
-            return superheroes.size();
-        } else {
-            return 0;
-        }
+        return superheroes.size();
     }
 
-    public void creationLoop() {
-        Superhero superhero = new Superhero();
-        addSuperhero(superhero);
-        updateCheck();
+    public ArrayList<Superhero> getHeroes() {
+        return superheroes;
     }
 
     public String toString() {
