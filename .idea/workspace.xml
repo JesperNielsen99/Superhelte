@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f091092d-a92b-4a54-adf4-ee7271705216" name="Changes" comment="replaced race with isHuman">
+    <list default="true" id="f091092d-a92b-4a54-adf4-ee7271705216" name="Changes" comment="replaced race with isHuman&#10;semicolon in text">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Heroes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Heroes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Superhero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,14 @@
       <updated>1662970436679</updated>
       <workItem from="1662970439045" duration="846000" />
     </task>
+    <task id="LOCAL-00001" summary="replaced race with isHuman&#10;semicolon in text">
+      <created>1667211222900</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667211222900</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -67,5 +75,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="replaced race with isHuman&#10;semicolon in text" />
+    <option name="LAST_COMMIT_MESSAGE" value="replaced race with isHuman&#10;semicolon in text" />
   </component>
 </project>

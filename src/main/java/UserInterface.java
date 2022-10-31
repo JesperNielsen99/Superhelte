@@ -90,9 +90,8 @@ public class UserInterface {
                     superhero.removeSuperPower(parseAsInt());
                 }
                 case 5 -> {
-                    System.out.printf("Enter a new race for %s: ", superhero.getHeroName());
-                    heroString = SCANNER.nextLine();
-                    superhero.setRace(heroString);
+                    System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
+                    superhero.setIsHuman(readIsHuman());
                 }
                 case 6 -> {
                     System.out.printf("Enter a new strength for %s: ", superhero.getHeroName());
@@ -117,8 +116,8 @@ public class UserInterface {
                     superhero.presentSuperPowers();
                     superhero.removeSuperPower(parseAsInt());
                     System.out.printf("Enter a new race for %s: ", superhero.getHeroName());
-                    heroString = SCANNER.nextLine();
-                    superhero.setRace(heroString);
+                    System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
+                    superhero.setIsHuman(readIsHuman());
                     System.out.printf("Enter a new strength for %s: ", superhero.getHeroName());
                     superhero.setStrength(parseAsDouble());
                 }
@@ -206,9 +205,8 @@ public class UserInterface {
         System.out.println("Enter the super power of the superhero.");
         String superPower = scanner.nextLine();
         superhero.setSuperPower(superPower);
-        System.out.println("Enter the race of the superhero.");
-        String race = scanner.next();
-        superhero.setRace(race);
+        System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
+        superhero.setIsHuman(readIsHuman());
         System.out.println("Enter the creation year of the superhero.");
         superhero.setCreationYear(parseAsInt());
         System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
@@ -259,6 +257,18 @@ public class UserInterface {
             } catch (NumberFormatException e) {
                 System.out.println("You did not enter a number. Please re-enter it.");
             }
+        }
+    }
+    public boolean readIsHuman() {
+        String answer = SCANNER.nextLine();
+        while (!(answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("no"))){
+            System.out.println("You Typed: " + answer + "\nPlease type 'yes' or 'no'");
+            answer = SCANNER.nextLine();
+        }
+        if (answer.equalsIgnoreCase("yes")){
+            return true;
+        } else {
+            return false;
         }
     }
 }

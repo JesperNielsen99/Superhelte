@@ -38,12 +38,12 @@ public class Database {
             Scanner heroScanner = new Scanner(file).useLocale(Locale.US);
             while (heroScanner.hasNextLine()) {
                 String[] superheroes = heroScanner.nextLine().split(";");
-                Superhero superhero = new Superhero(null);
+                Superhero superhero = new Superhero();
                 switch (superheroes.length) {
                     case (5) -> {
                         superhero.setPrivateName(superheroes[0]);
                         superhero.setSuperPower(superheroes[1]);
-                        superhero.setRace(superheroes[2]);
+                        superhero.setIsHuman(superheroes[2]);
                         superhero.setCreationYear(Integer.parseInt(superheroes[3]));
                         superhero.setStrength(Double.parseDouble(superheroes[4]));
                     }

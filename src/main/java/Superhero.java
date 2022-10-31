@@ -19,6 +19,15 @@ public class Superhero {
         this.strength = strength;
     }
 
+    public Superhero(String privateName, String superPower, boolean isHuman, int creationYear, double strength) {
+        heroName = "";
+        this.privateName = privateName;
+        this.superPower = superPower;
+        this.isHuman = isHuman;
+        this.creationYear = creationYear;
+        this.strength = strength;
+    }
+
     public int getCreationYear() {
         return creationYear;
     }
@@ -91,16 +100,14 @@ public class Superhero {
         return strength;
     }
 
-    public void setStrength(double strength) {
-        if (strength < 10000 || strength > -10000) {
-            if (strength < 1 && strength != 0) {
-                this.strength = strength * -1;
-            } else {
-                this.strength = strength;
-            }
+    public boolean setStrength(double strength) {
+        if (strength < 10000 || strength > 0) {
+          this.strength = strength;
         } else {
             this.strength = 0;
+            return false;
         }
+        return true;
     }
 
     public String printIsHuman() {
