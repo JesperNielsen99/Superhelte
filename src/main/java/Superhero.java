@@ -3,24 +3,20 @@ public class Superhero {
     private String heroName;
     private String privateName;
     private String superPower;
-    private String race;
+    private boolean isHuman;
     private int creationYear;
     private double strength;
 
     public Superhero() {
     }
 
-    public Superhero(String privateName) {
-        this.privateName = privateName;
-    }
-
-    public Superhero(String heroName, String privateName, String race) {
+    public Superhero(String heroName, String privateName, String superPower, boolean isHuman, int creationYear, double strength) {
         this.heroName = heroName;
         this.privateName = privateName;
-        this.superPower = "none";
-        this.race = race;
-        this.creationYear = 2000;
-        this.strength = 5000;
+        this.superPower = superPower;
+        this.isHuman = isHuman;
+        this.creationYear = creationYear;
+        this.strength = strength;
     }
 
     public int getCreationYear() {
@@ -31,12 +27,12 @@ public class Superhero {
         this.creationYear = creationYear;
     }
 
-    public String getRace() {
-        return race;
+    public boolean getIsHuman(){
+        return isHuman;
     }
 
-    public void setRace(String race) {
-        this.race = race;
+    public void setIsHuman(boolean isHuman) {
+        this.isHuman = isHuman;
     }
 
     public String getHeroName() {
@@ -95,23 +91,34 @@ public class Superhero {
         return strength;
     }
 
-    public boolean setStrength(double strength) {
-        if (strength < 10000 || strength > 0) {
-            this.strength = strength;
-            return true;
+    public void setStrength(double strength) {
+        if (strength < 10000 || strength > -10000) {
+            if (strength < 1 && strength != 0) {
+                this.strength = strength * -1;
+            } else {
+                this.strength = strength;
+            }
         } else {
-            return false;
+            this.strength = 0;
+        }
+    }
+
+    public String printIsHuman() {
+        if (getIsHuman() == true) {
+            return "Yes";
+        } else {
+            return "No";
         }
     }
 
     public String toString() {
         String printSuperhero;
         if (!heroName.equals("")) {
-            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================\n",
-            heroName, privateName, superPower,creationYear,race,strength);
+            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================",
+                    heroName, privateName, superPower,creationYear,isHuman,strength);
         } else {
-            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================\n",
-                    privateName, superPower,creationYear,race,strength);
+            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================",
+                    privateName, superPower,creationYear,isHuman,strength);
         }
         return printSuperhero;
     }
