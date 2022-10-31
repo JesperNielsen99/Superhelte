@@ -7,6 +7,7 @@ public class UserInterface {
 
     public UserInterface() {
         Database database = new Database();
+        //Controller controller = new Controller();
         menuOptions(database);
     }
 
@@ -95,7 +96,12 @@ public class UserInterface {
                 }
                 case 6 -> {
                     System.out.printf("Enter a new strength for %s: ", superhero.getHeroName());
-                    superhero.setStrength(parseAsDouble());
+                    double newStrength = parseAsDouble();
+                    if (superhero.setStrength(newStrength)) {
+                        System.out.println(String.format("%s, has gotten a new strength score of %s", superhero.getHeroName(), newStrength));
+                    } else {
+                        System.out.println(String.format("%s is not a valid number. it has to be between 1 and 10000."));
+                    }
                 }
                 case 7 -> {
                     System.out.printf("Enter the new superhero name for %s: ", superhero.getHeroName());
@@ -122,26 +128,6 @@ public class UserInterface {
             System.out.println("Invalid input please enter a number between 1-7\n");
         }
         System.out.println(superhero);
-    }
-
-    public int parseAsInt() {
-        while (true) {
-            try {
-                return Integer.parseInt(SCANNER.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("You did not enter a number. Please re-enter it.");
-            }
-        }
-    }
-
-    public double parseAsDouble() {
-        while (true) {
-            try {
-                return Double.parseDouble(SCANNER.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("You did not enter a number. Please re-enter it.");
-            }
-        }
     }
 
     public ArrayList<Superhero> searchForHero(Database database) {
@@ -254,5 +240,25 @@ public class UserInterface {
             return false;
         }
         return false;
+    }
+
+    public int parseAsInt() {
+        while (true) {
+            try {
+                return Integer.parseInt(SCANNER.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("You did not enter a number. Please re-enter it.");
+            }
+        }
+    }
+
+    public double parseAsDouble() {
+        while (true) {
+            try {
+                return Double.parseDouble(SCANNER.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("You did not enter a number. Please re-enter it.");
+            }
+        }
     }
 }
