@@ -43,7 +43,7 @@ public class Database {
                     case (5) -> {
                         superhero.setPrivateName(superheroes[0]);
                         superhero.setSuperPower(superheroes[1]);
-                        superhero.setIsHuman(superheroes[2]);
+                        superhero.setIsHuman(parseAsBoolean(superheroes[2]));
                         superhero.setCreationYear(Integer.parseInt(superheroes[3]));
                         superhero.setStrength(Double.parseDouble(superheroes[4]));
                     }
@@ -51,7 +51,7 @@ public class Database {
                         superhero.setHeroName(superheroes[0]);
                         superhero.setPrivateName(superheroes[1]);
                         superhero.setSuperPower(superheroes[2]);
-                        superhero.setRace(superheroes[3]);
+                        superhero.setIsHuman(Boolean.parseBoolean(superheroes[3]));
                         superhero.setCreationYear(Integer.parseInt(superheroes[4]));
                         superhero.setStrength(Double.parseDouble(superheroes[5]));
                     }
@@ -69,9 +69,9 @@ public class Database {
         try {
             FileWriter Writer = new FileWriter(fileName);
             for (Superhero superhero : superheroes) {
-                Writer.write(superhero.getHeroName() + "," + superhero.getPrivateName() + "," +
-                        superhero.getSuperPower() + "," + superhero.getRace() + "," +
-                        superhero.getCreationYear() + "," + superhero.getStrength() + "\n");
+                Writer.write(superhero.getHeroName() + ";" + superhero.getPrivateName() + ";" +
+                        superhero.getSuperPower() + ";" + superhero.getIsHuman() + ";" +
+                        superhero.getCreationYear() + ";" + superhero.getStrength() + "\n");
             }
             Writer.close();
             System.out.println("Successfully saved to file.");
@@ -105,27 +105,20 @@ public class Database {
         return heroList;
     }
 
-    public ArrayList<Superhero> searchRace(String race) {
-        ArrayList<Superhero> heroList = new ArrayList<>();
-        for (Superhero superhero : superheroes) {
-            if (superhero.getRace().toLowerCase().contains(race.toLowerCase())) {
-                heroList.add(superhero);
-                System.out.println(superhero);
-            }
-        }
-        System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
-        return heroList;
-    }
-
-    public void sortByHeroName() {
-    }
-
     public int getSize() {
         return superheroes.size();
     }
 
     public ArrayList<Superhero> getHeroes() {
         return superheroes;
+    }
+
+    public boolean parseAsBoolean(String isHuman) {
+        if (isHuman.equalsIgnoreCase("yes")){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String toString() {

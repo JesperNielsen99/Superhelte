@@ -121,11 +121,11 @@ public class Superhero {
     public String toString() {
         String printSuperhero;
         if (!heroName.equals("")) {
-            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================",
-                    heroName, privateName, superPower,creationYear,isHuman,strength);
+            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nSuperhero is human: %s\nStrength: %s\n==============================",
+                    heroName, privateName, superPower,creationYear,printIsHuman(),strength);
         } else {
-            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nRace: %s\nStrength: %s\n==============================",
-                    privateName, superPower,creationYear,isHuman,strength);
+            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nSuperhero is human: %s\nStrength: %s\n==============================",
+                    privateName, superPower,creationYear,printIsHuman(),strength);
         }
         return printSuperhero;
     }
