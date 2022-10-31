@@ -2,12 +2,10 @@ import java.io.*;
 import java.util.*;
 
 public class Database {
-    private final Scanner SCANNER = new Scanner(System.in).useLocale(Locale.US);
-    private final ArrayList<Superhero> superheroes;
+    private final ArrayList<Superhero> superheroes = new ArrayList<>();
     private final String FILENAME = "Heroes.txt";
 
     public Database() {
-        superheroes = new ArrayList<>();
         checkSuperheroDatabase(FILENAME);
         readSuperheroDatabase(FILENAME);
     }
@@ -39,7 +37,7 @@ public class Database {
             File file = new File(fileName);
             Scanner heroScanner = new Scanner(file).useLocale(Locale.US);
             while (heroScanner.hasNextLine()) {
-                String[] superheroes = heroScanner.nextLine().split(",");
+                String[] superheroes = heroScanner.nextLine().split(";");
                 Superhero superhero = new Superhero(null);
                 switch (superheroes.length) {
                     case (5) -> {
@@ -117,6 +115,9 @@ public class Database {
         }
         System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
         return heroList;
+    }
+
+    public void sortByHeroName() {
     }
 
     public int getSize() {
