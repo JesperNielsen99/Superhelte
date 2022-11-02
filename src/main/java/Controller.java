@@ -2,15 +2,16 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Controller {
+public class    Controller {
+    private Database database;
 
-/*
     public Controller() {
-        Database database = new Database();
-        FileHandler fileHandler = new FileHandler();
+        database = new Database();
     }
 
-    public Superhero chooseHero(ArrayList<Superhero> superheroes, Scanner SCANNER) {
+    // TODO: 02/11/2022 Separate to UI and Controller.
+    /*
+    public Superhero chooseHero(ArrayList<Superhero> superheroes) {
         if (superheroes.size() != 0) {
             if (superheroes.size() == 1) {
                 System.out.println(superheroes.get(0));
@@ -21,7 +22,7 @@ public class Controller {
                 }
                 System.out.printf("%s heroes were found with this search.\n\n", superheroes.size());
                 while (true) {
-                    int heroNumber = parseAsInt(SCANNER);
+                    int heroNumber = parseAsInt();
                     if (heroNumber < superheroes.size() && heroNumber >= 0) {
                         System.out.println(superheroes.get(heroNumber));
                         return superheroes.get(heroNumber);
@@ -35,7 +36,34 @@ public class Controller {
         return null;
     }
 
-    public void creationLoop(Database database, Scanner SCANNER){
+
+    public String amountOfSuperheroes(ArrayList<Superhero> superheroes) {
+        if (!superheroes.isEmpty()) {
+
+        }
+    }*/
+
+    public int getDatabaseSize() {
+        return database.getSize();
+    }
+
+    public void deleteSuperhero(int index) {
+        database.deleteSuperhero(index);
+    }
+
+    public void updateCheck() {
+        database.updateCheck();
+    }
+
+    public ArrayList<Superhero> searchHeroName(String name) {
+        return database.searchHeroName(name);
+    }
+
+    public ArrayList<Superhero> searchPrivateName(String name) {
+        return database.searchPrivateName(name);
+    }
+
+    /*public void createSuperhero(){
         Superhero superhero = new Superhero();
         System.out.println("Enter the hero name of the superhero if there is any. Else write Null.");
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
@@ -47,62 +75,40 @@ public class Controller {
         System.out.println("Enter the super power of the superhero.");
         String superPower = scanner.nextLine();
         superhero.setSuperPower(superPower);
-        System.out.println("Enter the race of the superhero.");
-        String race = scanner.next();
-        superhero.setRace(race);
+        System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
+
+        superhero.setIsHuman(readIsHuman());
         System.out.println("Enter the creation year of the superhero.");
-        superhero.setCreationYear(parseAsInt(SCANNER));
+        superhero.setCreationYear(parseAsInt());
         System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
-        superhero.setStrength(parseAsDouble(SCANNER));
+        superhero.setStrength(parseAsDouble());
         database.addSuperhero(superhero);
-        updateCheck(database);
+
+        System.out.println("Edit stored:\n");
+        System.out.println(superhero + "\n");
+    }*/
+
+    public void createSuperheroName(Superhero superhero, String name) {
+        superhero.setHeroName(name);
     }
 
-    public void updateCheck(Database database) {
-        database.writeSuperheroDatabase(database.getFILENAME());
-        System.out.println("Update Complete.");
+    public void createPrivateName(Superhero superhero, String name){
+        superhero.setHeroName(name);
+    }
+    public void createSuperPower(Superhero superhero, String power){
+        superhero.setSuperPower(power);
+    }
+    public void createIsHuman(Superhero superhero, boolean isHuman){
+        superhero.setIsHuman(isHuman);
+    }
+    public void createCreationYear(Superhero superhero, int creationYear){
+        superhero.setCreationYear(creationYear);
+    }
+    public void createStrength(Superhero superhero, double strength){
+        superhero.setStrength(strength);
     }
 
-    public boolean deleteDatabaseCheck(Database database, Scanner SCANNER) {
-        System.out.println("Be careful you are about to delete the ENTIRE database.\nDo you wish to continue?");
-        String answer = SCANNER.next();
-        if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
-            System.out.println("Are you sure you want to save and delete the database permanently?");
-            answer = SCANNER.next();
-            if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
-                System.out.println("Deleting the Database.");
-                database.getHeroes().clear();
-                database.writeSuperheroDatabase(database.getFILENAME());
-                System.out.println("Deletion Complete.");
-                return true;
-            }
-        } else {
-            System.out.println("The database will not be updates.");
-            return false;
-        }
-        return false;
+    public Database getDatabase() {
+        return database;
     }
-
-
-
-    public int parseAsInt(Scanner SCANNER) {
-        while (true) {
-            try {
-                return Integer.parseInt(SCANNER.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("You did not enter a number. Please re-enter it.");
-            }
-        }
-    }
-
-    public double parseAsDouble(Scanner SCANNER) {
-        while (true) {
-            try {
-                return Double.parseDouble(SCANNER.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("You did not enter a number. Please re-enter it.");
-            }
-        }
-    }
-*/
 }

@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class FileHandler {
-    private final String FILENAME = "Heroes.txt";
+    private final String FILENAME = "Heroes.csv";
     private Database database;
 /*
     public FileHandler(Database database) {

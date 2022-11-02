@@ -3,9 +3,11 @@ import java.util.*;
 
 public class Database {
     private final ArrayList<Superhero> superheroes = new ArrayList<>();
-    private final String FILENAME = "Heroes.txt";
+    private final String FILENAME = "Heroes.csv";
+    private FileHandler fileHandler;
 
     public Database() {
+        fileHandler = new FileHandler();
         checkSuperheroDatabase(FILENAME);
         readSuperheroDatabase(FILENAME);
     }
@@ -83,13 +85,15 @@ public class Database {
 
     public ArrayList<Superhero> searchHeroName(String heroName) {
         ArrayList<Superhero> heroList = new ArrayList<>();
-        for (Superhero superhero : superheroes) {
-            if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
-                heroList.add(superhero);
-                System.out.println(superhero);
+        if (heroList != null) {
+            for (Superhero superhero : superheroes) {
+                if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
+                    heroList.add(superhero);
+                    System.out.println(superhero);
+                }
             }
+            System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
         }
-        System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
         return heroList;
     }
 
@@ -103,6 +107,13 @@ public class Database {
         }
         System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
         return heroList;
+    }
+
+    public void updateCheck() {
+        //if (file != array) {
+            writeSuperheroDatabase(FILENAME);
+            System.out.println("Update Complete.");
+        //}
     }
 
     public int getSize() {

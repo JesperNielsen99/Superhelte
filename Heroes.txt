@@ -1,3 +1,0 @@
-Batman;Bruce Wayne;Much Money;false;1973;5000.0
-Superman;Kurt;Super Strength;false;1972;8500.5
-Wonder Woman;Diana;Super Sexy;false;1974;767667.0

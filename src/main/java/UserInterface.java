@@ -4,22 +4,22 @@ import java.util.Scanner;
 
 public class UserInterface {
     private final Scanner SCANNER = new Scanner(System.in).useLocale(Locale.US);
-    private Database database = new Database();
+    private Controller controller;
 
     public UserInterface() {
-        //Controller controller = new Controller();
-        menuOptions(database);
+        controller = new Controller();
+        menuOptions();
     }
 
-    public void menuOptions(Database database) {
+    public void menuOptions() {
         System.out.println("Welcome to the superhero universe.\n");
-        if (database.getSize() != 0) {
+        if (controller.getDatabaseSize() != 0) {
             while (true) {
                 System.out.println("""
                         1. Create new superhero.
                         2. Print database.
                         3. Search for a superhero\s
-                        4. Update superhero.
+                        4. Edit superhero.
                         5. Delete a superhero.
                         8. Delete the entire database.
                         9. Exit.""");
@@ -27,37 +27,34 @@ public class UserInterface {
                     String options = SCANNER.next();
                     switch (options) {
                         case "1" -> creationLoop();
-                        case "2" -> System.out.println(database);
+                        case "2" -> System.out.println(controller.getDatabase());
                         case "3" -> searchForHero();
                         case "4" -> {
-                            Superhero hero = chooseHero(searchForHero());
+                            Superhero hero = controller.chooseHero(searchForHero());
                             boolean exit = true;
                             while (exit) {
-                                System.out.print("""
-                                    1. Update hero name.
-                                    2. Update private name.
-                                    3. Add super powers.
-                                    4. Remove Super powers.
-                                    5. Update humanity.
-                                    6. Update strength.
-                                    7. Update everything.
-                                    8. End updating.""");
+                                System.out.println("""
+                                        1. Update hero name.
+                                        2. Update private name.
+                                        3. Add super powers.
+                                        4. Remove Super powers.
+                                        5. Update humanity.
+                                        6. Update strength.
+                                        7. Update everything.
+                                        8. End updating.""");
                                 exit = updateSuperhero(hero, parseAsInt());
-                                //updateCheck(database);
                             }
                         }
                         case "5" -> {
                             System.out.println("Enter the number of the superhero you want to delete.");
                             searchForHero();
-                            database.deleteSuperhero(parseAsInt());
-                            updateCheck();
+                            controller.deleteSuperhero(parseAsInt());
                         }
-                        case "8" -> {
-                            if (deleteDatabaseCheck()) {
-                                creationLoop();
-                            }
+                        case "9" -> {
+                            System.out.println("Saving Superheroes");
+                            controller.updateCheck();
+                            System.exit(0);
                         }
-                        case "9" -> System.exit(0);
                         default -> System.out.println("Invalid input please enter a number between 1-5, 8 or 9\n");
                     }
                 } catch (IllegalArgumentException e) {
@@ -108,22 +105,6 @@ public class UserInterface {
                     }
                 }
                 case 7 -> {
-                    System.out.printf("Enter the new superhero name for %s: ", superhero.getHeroName());
-                    heroString = SCANNER.nextLine();
-                    superhero.setHeroName(heroString);
-                    System.out.printf("Enter the new private name for %s: ", superhero.getHeroName());
-                    heroString = SCANNER.nextLine();
-                    superhero.setPrivateName(heroString);
-                    System.out.printf("Enter a new super power for %s: ", superhero.getHeroName());
-                    heroString = SCANNER.nextLine();
-                    superhero.addSuperPower(heroString);
-                    System.out.printf("Choose a superpower to remove from %s: ", superhero.getHeroName());
-                    superhero.presentSuperPowers();
-                    superhero.removeSuperPower(parseAsInt());
-                    System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
-                    superhero.setIsHuman(readIsHuman());
-                    System.out.printf("Enter a new strength for %s: ", superhero.getHeroName());
-                    superhero.setStrength(parseAsDouble());
                     System.out.println("Type new data and press ENTER. If you do not wish to edit data press Enter.");
 
                     System.out.println("Superhero name: " + superhero.getHeroName());
@@ -193,12 +174,12 @@ public class UserInterface {
             case "1" -> {
                 System.out.println("Enter the superhero name to search for.");
                 options = SCANNER.next();
-                return database.searchHeroName(options);
+                return controller.searchHeroName(options);
             }
             case "2" -> {
                 System.out.println("Enter the private name of the superhero to search for.");
                 options = SCANNER.next();
-                return database.searchPrivateName(options);
+                return controller.searchPrivateName(options);
             }
             case "8" -> {
                 System.out.println("Returning to the main menu.\n");
@@ -215,7 +196,31 @@ public class UserInterface {
         }
     }
 
-    public Superhero chooseHero(ArrayList<Superhero> superheroes) {
+    public void creationLoop() {
+        Superhero superhero = new Superhero();
+        System.out.println("Enter the hero name of the superhero if there is any. Else write Null.");
+        controller.createSuperheroName(superhero, SCANNER.nextLine());
+
+        System.out.println("Enter the private name of the superhero if there is any. Else write Null.");
+        controller.createPrivateName(superhero, SCANNER.nextLine());
+
+        System.out.println("Enter the super power of the superhero.");
+        controller.createSuperPower(superhero, SCANNER.nextLine());
+
+        System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
+        controller.createIsHuman(superhero, readIsHuman());
+
+        System.out.println("Enter the creation year of the superhero.");
+        controller.createCreationYear(superhero, parseAsInt());
+
+        System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
+        controller.createStrength(superhero, parseAsDouble());
+
+        System.out.println("Edit stored:\n");
+        System.out.println(superhero + "\n");
+    }
+
+    /*public Superhero chooseHero(ArrayList<Superhero> superheroes) {
         if (superheroes.size() != 0) {
             if (superheroes.size() == 1) {
                 System.out.println(superheroes.get(0));
@@ -253,48 +258,22 @@ public class UserInterface {
         String superPower = scanner.nextLine();
         superhero.setSuperPower(superPower);
         System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
+
         superhero.setIsHuman(readIsHuman());
         System.out.println("Enter the creation year of the superhero.");
         superhero.setCreationYear(parseAsInt());
         System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
         superhero.setStrength(parseAsDouble());
         database.addSuperhero(superhero);
-        updateCheck();
-        database.addSuperhero(superhero);
 
         System.out.println("Edit stored:\n");
         System.out.println(superhero + "\n");
-    }
-
-    public void updateCheck() {
-        database.writeSuperheroDatabase(database.getFILENAME());
-        System.out.println("Update Complete.");
-    }
-
-    public boolean deleteDatabaseCheck() {
-        System.out.println("Be careful you are about to delete the ENTIRE database.\nDo you wish to continue?");
-        String answer = SCANNER.next();
-        if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
-            System.out.println("Are you sure you want to save and delete the database permanently?");
-            answer = SCANNER.next();
-            if (answer.equals("yes") || answer.equals("Yes") || answer.equals("y") || answer.equals("Y")) {
-                System.out.println("Deleting the Database.");
-                database.getHeroes().clear();
-                database.writeSuperheroDatabase(database.getFILENAME());
-                System.out.println("Deletion Complete.");
-                return true;
-            }
-        } else {
-            System.out.println("The database will not be updates.");
-            return false;
-        }
-        return false;
-    }
+    }*/
 
     public int parseAsInt() {
         while (true) {
             try {
-                return Integer.parseInt(SCANNER.nextLine());
+                return Integer.parseInt(SCANNER.next());
             } catch (NumberFormatException e) {
                 System.out.println("You did not enter a number. Please re-enter it.");
             }
@@ -304,15 +283,16 @@ public class UserInterface {
     public double parseAsDouble() {
         while (true) {
             try {
-                return Double.parseDouble(SCANNER.nextLine());
+                return Double.parseDouble(SCANNER.next());
             } catch (NumberFormatException e) {
                 System.out.println("You did not enter a number. Please re-enter it.");
             }
         }
     }
+
     public boolean readIsHuman() {
-        String answer = SCANNER.nextLine();
-        while (!(answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("no"))){
+        String answer = SCANNER.next();
+        while (!(answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("no"))) {
             System.out.println("You Typed: " + answer + "\nPlease type 'yes' or 'no'");
             answer = SCANNER.nextLine();
         }
