@@ -21,7 +21,6 @@ public class UserInterface {
                         3. Search for a superhero\s
                         4. Edit superhero.
                         5. Delete a superhero.
-                        8. Delete the entire database.
                         9. Exit.""");
                 try {
                     String options = SCANNER.next();
@@ -109,19 +108,19 @@ public class UserInterface {
 
                     System.out.println("Superhero name: " + superhero.getHeroName());
                     String newSuperheroName = SCANNER.nextLine();
-                    if (!newSuperheroName.isEmpty()){
+                    if (!newSuperheroName.isEmpty()) {
                         superhero.setHeroName(newSuperheroName);
                     }
 
                     System.out.println("Civilian name: " + superhero.getPrivateName());
                     String newCivilianName = SCANNER.nextLine();
-                    if (!newCivilianName.isEmpty()){
+                    if (!newCivilianName.isEmpty()) {
                         superhero.setPrivateName(newCivilianName);
                     }
 
                     System.out.println("Superpower: " + superhero.getSuperPower());
                     String newSuperpower = SCANNER.nextLine();
-                    if (!newSuperpower.isEmpty()){
+                    if (!newSuperpower.isEmpty()) {
                         superhero.setSuperPower(newSuperpower);
                     }
 
@@ -135,19 +134,19 @@ public class UserInterface {
 
                     System.out.println("Is human: " + superhero.printIsHuman());
                     String newIsHuman = SCANNER.nextLine();
-                    if (!newIsHuman.isEmpty()){
+                    if (!newIsHuman.isEmpty()) {
                         superhero.setIsHuman(Boolean.parseBoolean(newIsHuman));
                     }
 
                     System.out.println("Creation Year: " + superhero.getCreationYear());
                     String newCreationYear = SCANNER.nextLine();
-                    if (!newCreationYear.isEmpty()){
+                    if (!newCreationYear.isEmpty()) {
                         superhero.setCreationYear(Integer.parseInt(newCreationYear));
                     }
 
                     System.out.println("Strength: " + superhero.getStrength());
                     String newStrength = SCANNER.nextLine();
-                    if (!newStrength.isEmpty()){
+                    if (!newStrength.isEmpty()) {
                         superhero.setStrength(Double.parseDouble(newStrength));
                     }
                 }
@@ -165,10 +164,11 @@ public class UserInterface {
 
     public ArrayList<Superhero> searchForHero() {
         System.out.println("""
-                                1. Search by superhero name.
-                                2. Search by private name of the superhero.
-                                8. Don't search anyway.
-                                9. Exit the program.""");
+                1. Search by superhero name.
+                2. Search by private name of the superhero.
+                8. Don't search anyway.
+                9. Exit the program.""");
+
         String options = SCANNER.next();
         switch (options) {
             case "1" -> {
@@ -296,7 +296,7 @@ public class UserInterface {
             System.out.println("You Typed: " + answer + "\nPlease type 'yes' or 'no'");
             answer = SCANNER.nextLine();
         }
-        if (answer.equalsIgnoreCase("yes")){
+        if (answer.equalsIgnoreCase("yes")) {
             return true;
         } else {
             return false;
