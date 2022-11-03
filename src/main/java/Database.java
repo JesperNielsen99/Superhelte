@@ -5,9 +5,11 @@ public class Database {
     private final ArrayList<Superhero> superheroes = new ArrayList<>();
     private final String FILENAME = "Heroes.csv";
     private FileHandler fileHandler;
+    private ArrayList<Superhero> searchResult = new ArrayList<>();
+    private Superhero currentHero;
 
     public Database() {
-        fileHandler = new FileHandler();
+        fileHandler = new FileHandler(this);
         checkSuperheroDatabase(FILENAME);
         readSuperheroDatabase(FILENAME);
     }
@@ -83,30 +85,55 @@ public class Database {
         }
     }
 
-    public ArrayList<Superhero> searchHeroName(String heroName) {
-        ArrayList<Superhero> heroList = new ArrayList<>();
-        if (heroList != null) {
+    public void searchHeroName(String heroName) {
+        if (searchResult != null) {
             for (Superhero superhero : superheroes) {
                 if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
-                    heroList.add(superhero);
+                    searchResult.add(superhero);
                     System.out.println(superhero);
                 }
             }
-            System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
+            System.out.printf("%s heroes were found with this search.\n\n", searchResult.size());
         }
-        return heroList;
     }
 
-    public ArrayList<Superhero> searchPrivateName(String privateName) {
-        ArrayList<Superhero> heroList = new ArrayList<>();
-        for (Superhero superhero : superheroes) {
-            if (superhero.getPrivateName().toLowerCase().contains(privateName.toLowerCase())) {
-                heroList.add(superhero);
-                System.out.println(superhero);
+    public void searchPrivateName(String privateName) {
+        if (searchResult != null) {
+            for (Superhero superhero : superheroes) {
+                if (superhero.getPrivateName().toLowerCase().contains(privateName.toLowerCase())) {
+                    searchResult.add(superhero);
+                    System.out.println(superhero);
+                }
             }
+            System.out.printf("%s heroes were found with this search.\n\n", searchResult.size());
         }
-        System.out.printf("%s heroes were found with this search.\n\n", heroList.size());
-        return heroList;
+    }
+
+    public String currentHeroToString() {
+        return currentHero.toString();
+    }
+
+    public void emptySearchResult() {
+        searchResult.clear();
+    }
+
+    public String searchResultToString() {
+        StringBuilder array = new StringBuilder();
+        for (int i = 0; i < searchResult.size(); i++) {
+            array.append(i+1 + ": " + searchResult.get(i));
+        }
+        return array.toString();
+    }
+
+    public boolean searchResultIsEmpty() {
+        return searchResult.isEmpty();
+    }
+
+    public boolean searchResultIsOne() {
+        if (searchResult.size() == 1) {
+            return true;
+        }
+        return false;
     }
 
     public void updateCheck() {
@@ -130,6 +157,12 @@ public class Database {
         } else {
             return false;
         }
+    }
+
+    public String setHeroName(int index, String newHeroName) {
+        currentHero = searchResult.get(index);
+        currentHero.setHeroName(newHeroName);
+        return currentHeroToString();
     }
 
     public String toString() {

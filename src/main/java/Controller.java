@@ -10,12 +10,13 @@ public class    Controller {
     }
 
     // TODO: 02/11/2022 Separate to UI and Controller.
-    /*
-    public Superhero chooseHero(ArrayList<Superhero> superheroes) {
-        if (superheroes.size() != 0) {
-            if (superheroes.size() == 1) {
-                System.out.println(superheroes.get(0));
-                return superheroes.get(0);
+    public int chooseHero() {
+        if (!database.searchResultIsEmpty()) {
+            if (database.searchResultIsOne()) {
+                database.setCurrentHero();
+                System.out.println(database.getCurrentHero());
+                return database.getCurrentHero();
+                //return superheroes.get(0);
             } else {
                 for (int i = 0; i < superheroes.size(); i++) {
                     System.out.printf("%s: %s, %s\n", i, superheroes.get(i).getHeroName(), superheroes.get(i).getPrivateName());
@@ -36,12 +37,29 @@ public class    Controller {
         return null;
     }
 
+    public void setHeroName(int index, String newHeroName) {
+        database.setHeroName(index, newHeroName);
+    }
 
-    public String amountOfSuperheroes(ArrayList<Superhero> superheroes) {
-        if (!superheroes.isEmpty()) {
+    public void setPrivateName(int index, String newPrivateName) {
+        database.setPrivateName(index, newPrivateName);
+    }
 
-        }
-    }*/
+    public void setSuperpower(int index, String newSuperpower) {
+        database.setSuperpower(index, newSuperpower);
+    }
+
+    public void setCreationYear(int index, int creationYear) {
+        database.setCreationYear(index, creationYear);
+    }
+
+    public void setHeroName(int index, String newHeroName) {
+        database.setHeroName(index, newHeroName);
+    }
+
+    public void setHeroName(int index, String newHeroName) {
+        database.setHeroName(index, newHeroName);
+    }
 
     public int getDatabaseSize() {
         return database.getSize();
@@ -55,38 +73,17 @@ public class    Controller {
         database.updateCheck();
     }
 
-    public ArrayList<Superhero> searchHeroName(String name) {
-        return database.searchHeroName(name);
+    public void searchHeroName(String name) {
+        database.searchHeroName(name);
     }
 
-    public ArrayList<Superhero> searchPrivateName(String name) {
-        return database.searchPrivateName(name);
+    public void searchPrivateName(String name) {
+        database.searchPrivateName(name);
     }
 
-    /*public void createSuperhero(){
-        Superhero superhero = new Superhero();
-        System.out.println("Enter the hero name of the superhero if there is any. Else write Null.");
-        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
-        String heroName = scanner.nextLine();
-        superhero.setHeroName(heroName);
-        System.out.println("Enter the private name of the superhero if there is any. Else write Null.");
-        String privateName = scanner.nextLine();
-        superhero.setPrivateName(privateName);
-        System.out.println("Enter the super power of the superhero.");
-        String superPower = scanner.nextLine();
-        superhero.setSuperPower(superPower);
-        System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
-
-        superhero.setIsHuman(readIsHuman());
-        System.out.println("Enter the creation year of the superhero.");
-        superhero.setCreationYear(parseAsInt());
-        System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
-        superhero.setStrength(parseAsDouble());
-        database.addSuperhero(superhero);
-
-        System.out.println("Edit stored:\n");
-        System.out.println(superhero + "\n");
-    }*/
+    public String searchResultToString() {
+        return database.searchResultToString();
+    }
 
     public void createSuperheroName(Superhero superhero, String name) {
         superhero.setHeroName(name);
