@@ -2,63 +2,33 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class    Controller {
+public class Controller {
     private Database database;
 
     public Controller() {
         database = new Database();
     }
 
-    // TODO: 02/11/2022 Separate to UI and Controller.
-    public int chooseHero() {
-        if (!database.searchResultIsEmpty()) {
-            if (database.searchResultIsOne()) {
-                database.setCurrentHero();
-                System.out.println(database.getCurrentHero());
-                return database.getCurrentHero();
-                //return superheroes.get(0);
-            } else {
-                for (int i = 0; i < superheroes.size(); i++) {
-                    System.out.printf("%s: %s, %s\n", i, superheroes.get(i).getHeroName(), superheroes.get(i).getPrivateName());
-                }
-                System.out.printf("%s heroes were found with this search.\n\n", superheroes.size());
-                while (true) {
-                    int heroNumber = parseAsInt();
-                    if (heroNumber < superheroes.size() && heroNumber >= 0) {
-                        System.out.println(superheroes.get(heroNumber));
-                        return superheroes.get(heroNumber);
-                    } else {
-                        System.out.println("This input was not valid. Enter a new value between 0 and " + (superheroes.size()-1));
-                    }
-                }
-            }
-        }
-        System.out.println("No heroes was found with this search.\n\n");
-        return null;
+    public String setHeroName(String newHeroName) {
+        return database.setHeroName(newHeroName);
     }
 
-    public void setHeroName(int index, String newHeroName) {
-        database.setHeroName(index, newHeroName);
+    public String setPrivateName(String newPrivateName) { return database.setPrivateName(newPrivateName); }
+
+    public String setSuperPower(String newSuperPower) {
+        return database.setSuperPower(newSuperPower);
     }
 
-    public void setPrivateName(int index, String newPrivateName) {
-        database.setPrivateName(index, newPrivateName);
+    public String setCreationYear(int creationYear) {
+        return database.setCreationYear(creationYear);
     }
 
-    public void setSuperpower(int index, String newSuperpower) {
-        database.setSuperpower(index, newSuperpower);
+    public String setIsHuman(boolean newIsHuman) {
+        return database.setIsHuman(newIsHuman);
     }
 
-    public void setCreationYear(int index, int creationYear) {
-        database.setCreationYear(index, creationYear);
-    }
-
-    public void setHeroName(int index, String newHeroName) {
-        database.setHeroName(index, newHeroName);
-    }
-
-    public void setHeroName(int index, String newHeroName) {
-        database.setHeroName(index, newHeroName);
+    public String setStrength(double newStrength) {
+        return database.setStrength(newStrength);
     }
 
     public int getDatabaseSize() {
@@ -89,21 +59,33 @@ public class    Controller {
         superhero.setHeroName(name);
     }
 
-    public void createPrivateName(Superhero superhero, String name){
+    public void createPrivateName(Superhero superhero, String name) {
         superhero.setHeroName(name);
     }
-    public void createSuperPower(Superhero superhero, String power){
+
+    public void createSuperPower(Superhero superhero, String power) {
         superhero.setSuperPower(power);
     }
-    public void createIsHuman(Superhero superhero, boolean isHuman){
+
+    public void createIsHuman(Superhero superhero, boolean isHuman) {
         superhero.setIsHuman(isHuman);
     }
-    public void createCreationYear(Superhero superhero, int creationYear){
+
+    public void createCreationYear(Superhero superhero, int creationYear) {
         superhero.setCreationYear(creationYear);
     }
-    public void createStrength(Superhero superhero, double strength){
+
+    public void createStrength(Superhero superhero, double strength) {
         superhero.setStrength(strength);
     }
+    public void setCurrentHero(int index) { database.setCurrentHero(index); }
+    public String getCurrentHeroName() { return database.getCurrentHeroName(); }
+    public String getCurrentHeroPrivateName() { return database.getCurrentPrivateName(); }
+    public String getCurrentHeroSuperPower() { return database.getCurrentSuperPower(); }
+    public int getCurrentHeroCreationYear() { return database.getCurrentCreationYear(); }
+    public boolean getCurrentHeroIsHuman() { return database.getCurrentHeroIsHuman(); }
+    public double getCurrentHeroStrength() { return database.getCurrentHeroStrength(); }
+    public int getSearchResultSize() { return database.getSearchResultSize(); }
 
     public Database getDatabase() {
         return database;
