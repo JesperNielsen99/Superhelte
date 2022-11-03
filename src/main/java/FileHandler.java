@@ -8,21 +8,13 @@ import java.util.Scanner;
 
 public class FileHandler {
     private final String FILENAME = "Heroes.csv";
-    private Database database;
-/*
-    public FileHandler(Database database) {
-        this.database = database;
+
+    public FileHandler() {
     }
 
-
-
-    public String getFILENAME() {
-        return FILENAME;
-    }
-
-    public void checkSuperheroDatabase(String fileName) {
+    public void checkSuperheroDatabase() {
         try {
-            File myObj = new File(fileName);
+            File myObj = new File(FILENAME);
             myObj.createNewFile();
         } catch (IOException e) {
             System.out.println("An error occurred.");
@@ -30,31 +22,20 @@ public class FileHandler {
         }
     }
 
-    public ArrayList<Superhero> readSuperheroDatabase(String fileName) {
+    public ArrayList<Superhero> readSuperheroDatabase() {
         ArrayList<Superhero> superheroList = new ArrayList<>();
         try {
-            File file = new File(fileName);
+            File file = new File(FILENAME);
             Scanner heroScanner = new Scanner(file).useLocale(Locale.US);
             while (heroScanner.hasNextLine()) {
                 String[] superheroes = heroScanner.nextLine().split(",");
-                Superhero superhero = new Superhero(null);
-                switch (superheroes.length) {
-                    case (5) -> {
-                        superhero.setPrivateName(superheroes[0]);
-                        superhero.setSuperPower(superheroes[1]);
-                        superhero.setRace(superheroes[2]);
-                        superhero.setCreationYear(Integer.parseInt(superheroes[3]));
-                        superhero.setStrength(Double.parseDouble(superheroes[4]));
-                    }
-                    case (6) -> {
-                        superhero.setHeroName(superheroes[0]);
-                        superhero.setPrivateName(superheroes[1]);
-                        superhero.setSuperPower(superheroes[2]);
-                        superhero.setRace(superheroes[3]);
-                        superhero.setCreationYear(Integer.parseInt(superheroes[4]));
-                        superhero.setStrength(Double.parseDouble(superheroes[5]));
-                    }
-                }
+                Superhero superhero = new Superhero();
+                    superhero.setHeroName(superheroes[0]);
+                    superhero.setPrivateName(superheroes[1]);
+                    superhero.setSuperPower(superheroes[2]);
+                    superhero.setIsHuman(Boolean.parseBoolean(superheroes[3]));
+                    superhero.setCreationYear(Integer.parseInt(superheroes[4]));
+                    superhero.setStrength(Double.parseDouble(superheroes[5]));
                 superheroList.add(superhero);
             }
             heroScanner.close();
@@ -66,21 +47,13 @@ public class FileHandler {
         }
     }
 
-    public void addSuperhero(ArrayList<Superhero> superheroes) {
-        if (superheroes != null) {
-            for (Superhero superhero : superheroes) {
-                database.addSuperhero(superhero);
-            }
-        }
-    }
-
-    public void writeSuperheroDatabase(String fileName) {
-        if(database.getHeroes() != readSuperheroDatabase(FILENAME)) {
+    public void writeSuperheroDatabase(ArrayList<Superhero> superheroes) {
+        //if(database.getHeroes() != readSuperheroDatabase(FILENAME)) {
             try {
-                FileWriter Writer = new FileWriter(fileName);
-                for (Superhero superhero : database.getHeroes()) {
+                FileWriter Writer = new FileWriter(FILENAME);
+                for (Superhero superhero : superheroes) {
                     Writer.write(superhero.getHeroName() + "," + superhero.getPrivateName() + "," +
-                            superhero.getSuperPower() + "," + superhero.getRace() + "," +
+                            superhero.getSuperPower() + "," + superhero.getIsHuman() + "," +
                             superhero.getCreationYear() + "," + superhero.getStrength() + "\n");
                 }
                 Writer.close();
@@ -89,7 +62,6 @@ public class FileHandler {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
-        }
+        //}
     }
- */
 }
