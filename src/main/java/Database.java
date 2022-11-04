@@ -2,15 +2,10 @@ import java.util.*;
 
 public class Database {
     private final ArrayList<Superhero> superheroes = new ArrayList<>();
-    private ArrayList<Superhero> searchResult = new ArrayList<>();
-    private final String FILENAME = "Heroes.csv";
-    private FileHandler fileHandler;
+    private final ArrayList<Superhero> searchResult = new ArrayList<>();
     private Superhero currentHero;
 
     public Database() {
-        fileHandler = new FileHandler();
-        checkSuperheroDatabase();
-        readSuperheroDatabaseFromString();
     }
 
     public void addSuperhero(Superhero superhero) {
@@ -21,18 +16,9 @@ public class Database {
         superheroes.remove(heroNumber);
     }
 
-    public String getFILENAME() {
-        return FILENAME;
-    }
-
-    public void checkSuperheroDatabase() {
-        fileHandler.checkSuperheroDatabase();
-    }
-
-    public void readSuperheroDatabaseFromString() {
-        ArrayList<String> rawHeroData = fileHandler.readSuperheroDatabase();
-        for (int i = 0; i < rawHeroData.size(); i++) {
-            String[] heroDataArray = rawHeroData.get(i).split(";");
+    public void readSuperheroDatabaseFromString(ArrayList<String> heroDataInput) {
+        for (String s : heroDataInput) {
+            String[] heroDataArray = s.split(";");
             Superhero superhero = new Superhero();
             superhero.setHeroName(heroDataArray[0]);
             superhero.setPrivateName(heroDataArray[1]);
@@ -44,34 +30,30 @@ public class Database {
         }
     }
 
-    public void writeSuperheroDatabaseFromString() {
+    public String writeSuperheroDatabaseFromString() {
         StringBuilder heroData = new StringBuilder();
         for (Superhero superhero : superheroes) {
-            heroData.append(superhero.getHeroName() + ";" + superhero.getPrivateName() + ";" +
-                    superhero.getSuperPower() + ";" + superhero.getIsHuman() + ";" +
-                    superhero.getCreationYear() + ";" + superhero.getStrength() + "\n");
+            heroData.append(String.format("%s;%s;%s;%s;%s;%s", superhero.getHeroName(),
+                    superhero.getPrivateName(), superhero.getSuperPower(), superhero.getIsHuman(),
+                    superhero.getCreationYear(), superhero.getStrength())).append("\n");
         }
-        fileHandler.writeSuperheroDatabase(heroData.toString());
+        return heroData.toString();
     }
 
     public void searchHeroName(String heroName) {
         emptySearchResult();
-        if (searchResult != null) {
-            for (Superhero superhero : superheroes) {
-                if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
-                    searchResult.add(superhero);
-                }
+        for (Superhero superhero : superheroes) {
+            if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
+                searchResult.add(superhero);
             }
         }
     }
 
     public void searchPrivateName(String privateName) {
         emptySearchResult();
-        if (searchResult != null) {
-            for (Superhero superhero : superheroes) {
-                if (superhero.getPrivateName().toLowerCase().contains(privateName.toLowerCase())) {
-                    searchResult.add(superhero);
-                }
+        for (Superhero superhero : superheroes) {
+            if (superhero.getPrivateName().toLowerCase().contains(privateName.toLowerCase())) {
+                searchResult.add(superhero);
             }
         }
     }
@@ -84,20 +66,17 @@ public class Database {
         searchResult.clear();
     }
 
+    public void removeCurrentHero() {
+        currentHero = null;
+    }
+
     public String searchResultToString() {
         StringBuilder searchResultArray = new StringBuilder();
         for (int i = 0; i < searchResult.size(); i++) {
-            searchResultArray.append(i+1 + ")\n" + searchResult.get(i));
+            searchResultArray.append(String.format("%s)\n%s", i + 1, searchResult.get(i)));
         }
         searchResultArray.append(String.format("\n%s superheroes matched this search.\n", searchResult.size()));
         return searchResultArray.toString();
-    }
-
-    public void updateCheck() {
-        //if (file != array) {
-            writeSuperheroDatabaseFromString();
-            System.out.println("Update Complete.");
-        //}
     }
 
     public int getSize() {
@@ -108,53 +87,62 @@ public class Database {
         currentHero = searchResult.get(index);
     }
 
-    public String setHeroName(String newHeroName) {
+    public void createSuperhero() {
+        currentHero = new Superhero();
+        superheroes.add(currentHero);
+    }
+
+    public void setHeroName(String newHeroName) {
         currentHero.setHeroName(newHeroName);
-        return currentHeroToString();
     }
 
-    public String setPrivateName(String newPrivateHero) {
+    public void setPrivateName(String newPrivateHero) {
         currentHero.setPrivateName(newPrivateHero);
-        return currentHeroToString();
     }
 
-    public String setSuperPower(String newSuperPower) {
+    public void setSuperPower(String newSuperPower) {
         currentHero.addSuperPower(newSuperPower);
-        return currentHeroToString();
     }
 
-    public String setCreationYear(int newCreationYear) {
-        currentHero.setCreationYear(newCreationYear);
-        return currentHeroToString();
+    public boolean setCreationYear(int newCreationYear) {
+        return currentHero.setCreationYear(newCreationYear);
     }
 
-    public String setIsHuman(boolean newIsHuman) {
-        currentHero.setIsHuman(newIsHuman);
-        return currentHeroToString();
+    public void setIsHuman(boolean newIsHuman) {
+         currentHero.setIsHuman(newIsHuman);
     }
 
-    public String setStrength(double newStrength) {
-        if (currentHero.setStrength(newStrength)) {
-            return currentHeroToString();
-        } else {
-            return String.format("%s is not a valid number. it has to be between 1 and 10000.");
-        }
+    public boolean setStrength(double newStrength) {
+        return currentHero.setStrength(newStrength);
     }
 
-    public String getCurrentHeroName() { return currentHero.getHeroName(); }
-    public String getCurrentPrivateName() { return currentHero.getPrivateName(); }
-    public String getCurrentSuperPower() { return currentHero.getSuperPower(); }
-    public int getCurrentCreationYear() { return currentHero.getCreationYear(); }
-    public boolean getCurrentHeroIsHuman() { return currentHero.getIsHuman(); }
-    public double getCurrentHeroStrength() { return currentHero.getStrength(); }
+    public String getCurrentHeroName() {
+        return currentHero.getHeroName();
+    }
+
+    public String getCurrentPrivateName() {
+        return currentHero.getPrivateName();
+    }
+
+    public String getCurrentSuperPower() {
+        return currentHero.getSuperPower();
+    }
+
+    public int getCurrentCreationYear() {
+        return currentHero.getCreationYear();
+    }
+
+    public boolean getCurrentHeroIsHuman() {
+        return currentHero.getIsHuman();
+    }
+
+    public double getCurrentHeroStrength() {
+        return currentHero.getStrength();
+    }
+
     public int getSearchResultSize() {
-        if (searchResult != null) {
-            return searchResult.size();
-        } else {
-            return 0;
-        }
+        return searchResult.size();
     }
-
 
 
     public String toString() {

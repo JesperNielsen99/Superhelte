@@ -1,33 +1,41 @@
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Scanner;
-
 public class Controller {
-    private Database database;
+    private final Database database;
+    private final FileHandler fileHandler;
 
     public Controller() {
         database = new Database();
+        fileHandler = new FileHandler();
+        readFileFromFileHandler();
     }
 
-    public String setHeroName(String newHeroName) {
-        return database.setHeroName(newHeroName);
+    public void createSuperhero() {
+        database.createSuperhero();
     }
 
-    public String setPrivateName(String newPrivateName) { return database.setPrivateName(newPrivateName); }
-
-    public String setSuperPower(String newSuperPower) {
-        return database.setSuperPower(newSuperPower);
+    public String getCurrentHeroToString() {
+        return database.currentHeroToString();
+    }
+    public void setHeroName(String newHeroName) {
+        database.setHeroName(newHeroName);
     }
 
-    public String setCreationYear(int creationYear) {
+    public void setPrivateName(String newPrivateName) {
+        database.setPrivateName(newPrivateName);
+    }
+
+    public void setSuperPower(String newSuperPower) {
+        database.setSuperPower(newSuperPower);
+    }
+
+    public boolean setCreationYear(int creationYear) {
         return database.setCreationYear(creationYear);
     }
 
-    public String setIsHuman(boolean newIsHuman) {
-        return database.setIsHuman(newIsHuman);
+    public void setIsHuman(boolean newIsHuman) {
+        database.setIsHuman(newIsHuman);
     }
 
-    public String setStrength(double newStrength) {
+    public boolean setStrength(double newStrength) {
         return database.setStrength(newStrength);
     }
 
@@ -39,8 +47,9 @@ public class Controller {
         database.deleteSuperhero(index);
     }
 
-    public void updateCheck() {
-        database.updateCheck();
+    public String updateCheck() {
+        writeFileToFileHandler();
+        return "Save complete.";
     }
 
     public void searchHeroName(String name) {
@@ -55,37 +64,34 @@ public class Controller {
         return database.searchResultToString();
     }
 
-    public void createSuperheroName(Superhero superhero, String name) {
-        superhero.setHeroName(name);
-    }
-
-    public void createPrivateName(Superhero superhero, String name) {
-        superhero.setHeroName(name);
-    }
-
-    public void createSuperPower(Superhero superhero, String power) {
-        superhero.setSuperPower(power);
-    }
-
-    public void createIsHuman(Superhero superhero, boolean isHuman) {
-        superhero.setIsHuman(isHuman);
-    }
-
-    public void createCreationYear(Superhero superhero, int creationYear) {
-        superhero.setCreationYear(creationYear);
-    }
-
-    public void createStrength(Superhero superhero, double strength) {
-        superhero.setStrength(strength);
-    }
     public void setCurrentHero(int index) { database.setCurrentHero(index); }
+
     public String getCurrentHeroName() { return database.getCurrentHeroName(); }
+
     public String getCurrentHeroPrivateName() { return database.getCurrentPrivateName(); }
+
     public String getCurrentHeroSuperPower() { return database.getCurrentSuperPower(); }
+
     public int getCurrentHeroCreationYear() { return database.getCurrentCreationYear(); }
+
     public boolean getCurrentHeroIsHuman() { return database.getCurrentHeroIsHuman(); }
+
     public double getCurrentHeroStrength() { return database.getCurrentHeroStrength(); }
+
     public int getSearchResultSize() { return database.getSearchResultSize(); }
+    public void endEdit() {
+        database.emptySearchResult();
+        database.removeCurrentHero();
+    }
+    public void endSearch() { database.emptySearchResult(); }
+
+    public void readFileFromFileHandler() {
+        database.readSuperheroDatabaseFromString(fileHandler.readSuperheroDatabase());
+    }
+
+    public void writeFileToFileHandler() {
+        fileHandler.writeSuperheroDatabase(database.writeSuperheroDatabaseFromString());
+    }
 
     public Database getDatabase() {
         return database;

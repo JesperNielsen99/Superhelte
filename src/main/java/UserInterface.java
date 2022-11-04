@@ -1,10 +1,10 @@
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
     private final Scanner SCANNER = new Scanner(System.in).useLocale(Locale.US);
-    private Controller controller;
+    private final Controller controller;
 
     public UserInterface() {
         controller = new Controller();
@@ -24,9 +24,12 @@ public class UserInterface {
                 try {
                     String options = SCANNER.next();
                     switch (options) {
-                        case "1" -> creationLoop();
+                        case "1" -> createSuperhero();
                         case "2" -> System.out.println(controller.getDatabase());
-                        case "3" -> System.out.println(searchForHero());
+                        case "3" -> {
+                            System.out.println(searchForHero());
+                            controller.endSearch();
+                        }
                         case "4" -> {
                             String heroesPresented = searchForHero();
                             System.out.println(heroesPresented);
@@ -54,19 +57,26 @@ public class UserInterface {
                                             5. Update humanity.
                                             6. Update strength.
                                             7. Update everything.
-                                            8. End updating.""");
+                                            9. End updating.""");
                                     exit = updateSuperhero(parseAsInt());
                                 }
                             }
                         }
                         case "5" -> {
-                            System.out.println("Enter the number of the superhero you want to delete.");
-                            searchForHero();
-                            controller.deleteSuperhero(parseAsInt());
+                            String heroesPresented = searchForHero();
+                            System.out.println(searchForHero());
+                            System.out.print("Enter the number of the superhero you want to delete: ");
+                            int heroIndex = parseAsInt() - 1;
+                            while (heroIndex > controller.getSearchResultSize() - 1) {
+                                System.out.println(heroesPresented);
+                                System.out.print("Enter the number of the superhero you want to delete: ");
+                                heroIndex = parseAsInt() - 1;
+                            }
+                            controller.deleteSuperhero(heroIndex);
                         }
                         case "9" -> {
                             System.out.println("Saving Superheroes");
-                            controller.updateCheck();
+                            System.out.println(controller.updateCheck());
                             System.exit(0);
                         }
                         default -> System.out.println("Invalid input please enter a number between 1-5, 8 or 9\n");
@@ -77,7 +87,7 @@ public class UserInterface {
             }
         } else {
             System.out.println("You have no heroes in the database, please create a new one.");
-            creationLoop();
+            createSuperhero();
         }
     }
 
@@ -97,12 +107,12 @@ public class UserInterface {
                     controller.setPrivateName(heroString);
                 }
                 case 3 -> {
-                    System.out.printf("Enter a new super power for %s: ", controller.getCurrentHeroSuperPower());
+                    System.out.printf("Enter a new super power for %s: ", controller.getCurrentHeroName());
                     heroString = SCANNER.nextLine();
                     controller.setSuperPower(heroString);
                 }
                 case 4 -> {
-                    System.out.printf("Enter a new creation year for %s: ", controller.getCurrentHeroCreationYear());
+                    System.out.printf("Enter a new creation year for %s: ", controller.getCurrentHeroName());
                     controller.setCreationYear(parseAsInt());
                 }
                 case 5 -> {
@@ -121,40 +131,47 @@ public class UserInterface {
                     System.out.println("Superhero name: " + controller.getCurrentHeroName());
                     String newSuperheroName = SCANNER.nextLine();
                     if (!newSuperheroName.isEmpty()) {
-                        System.out.println(controller.setHeroName(newSuperheroName));
+                        controller.setHeroName(newSuperheroName);
+                        System.out.println(controller.getCurrentHeroName());
                     }
 
                     System.out.println("Civilian name: " + controller.getCurrentHeroPrivateName());
                     String newCivilianName = SCANNER.nextLine();
                     if (!newCivilianName.isEmpty()) {
-                        System.out.println(controller.setPrivateName(newCivilianName));
+                        controller.setPrivateName(newCivilianName);
+                        System.out.println(controller.getCurrentHeroPrivateName());
                     }
 
                     System.out.println("Superpower: " + controller.getCurrentHeroSuperPower());
                     String newSuperpower = SCANNER.nextLine();
                     if (!newSuperpower.isEmpty()) {
-                        System.out.println(controller.setSuperPower(newSuperpower));
+                        controller.setSuperPower(newSuperpower);
+                        System.out.println(controller.getCurrentHeroSuperPower());
                     }
 
                     System.out.println("Creation Year: " + controller.getCurrentHeroCreationYear());
                     String newCreationYear = SCANNER.nextLine();
                     if (!newCreationYear.isEmpty()) {
-                        System.out.println(controller.setCreationYear(Integer.parseInt(newCreationYear)));
+                        controller.setCreationYear(Integer.parseInt(newCreationYear));
+                        System.out.println(controller.getCurrentHeroCreationYear());
                     }
 
                     System.out.println("Is human: " + controller.getCurrentHeroIsHuman());
                     String newIsHuman = SCANNER.nextLine();
                     if (!newIsHuman.isEmpty()) {
-                        System.out.println(controller.setIsHuman(Boolean.parseBoolean(newIsHuman)));
+                        controller.setIsHuman(Boolean.parseBoolean(newIsHuman));
+                        System.out.println(controller.getCurrentHeroIsHuman());
                     }
 
                     System.out.println("Strength: " + controller.getCurrentHeroStrength());
                     String newStrength = SCANNER.nextLine();
                     if (!newStrength.isEmpty()) {
-                        System.out.println(controller.setStrength(Double.parseDouble(newStrength)));
+                        controller.setStrength(Double.parseDouble(newStrength));
+                        System.out.println(controller.getCurrentHeroStrength());
                     }
                 }
-                case 8 -> {
+                case 9 -> {
+                    controller.endEdit();
                     return false;
                 }
                 default -> System.out.println("Invalid input please enter a number between 1-7\n");
@@ -171,7 +188,7 @@ public class UserInterface {
                 2. Search by private name of the superhero.
                 9. Don't search anyway.""");
 
-        String options = null;
+        String options;
         switch (parseAsInt()) {
             case 1 -> {
                 System.out.println("Enter the superhero name to search for.");
@@ -195,28 +212,38 @@ public class UserInterface {
         }
     }
 
-    public void creationLoop() {
-        Superhero superhero = new Superhero();
-        System.out.println("Enter the hero name of the superhero if there is any. Else write Null.");
-        controller.createSuperheroName(superhero, SCANNER.nextLine());
+    public void createSuperhero() {
+        controller.createSuperhero();
+        System.out.print("Enter the hero name of the superhero if there is any. Else press the enter key: ");
+        String scannerBugFix = SCANNER.nextLine();
+        SCANNER.nextLine();
+        controller.setHeroName(scannerBugFix);
 
-        System.out.println("Enter the private name of the superhero if there is any. Else write Null.");
-        controller.createPrivateName(superhero, SCANNER.nextLine());
+        System.out.print("Enter the private name of the superhero if there is any. Else press the enter key: ");
+        controller.setPrivateName(SCANNER.nextLine());
 
-        System.out.println("Enter the super power of the superhero.");
-        controller.createSuperPower(superhero, SCANNER.nextLine());
+        System.out.print("Enter the super power of the superhero: ");
+        controller.setSuperPower(SCANNER.nextLine());
 
-        System.out.printf("Is %s human? (Yes/No): ", superhero.getHeroName());
-        controller.createIsHuman(superhero, readIsHuman());
+        System.out.printf("Is %s human? (Yes/No): ",controller.getCurrentHeroName());
+        controller.setIsHuman(readIsHuman());
 
-        System.out.println("Enter the creation year of the superhero.");
-        controller.createCreationYear(superhero, parseAsInt());
+        System.out.print("Enter the creation year of the superhero: ");
+        boolean legalYear = controller.setCreationYear(parseAsInt());
+        while (!legalYear) {
+            System.out.printf("Invalid creation year Enter a year before %s: ", LocalDateTime.now().getYear());
+            legalYear = controller.setCreationYear(parseAsInt());
+        }
 
-        System.out.println("Enter the strength of the superhero as a decimal number. From 1 - 10000.");
-        controller.createStrength(superhero, parseAsDouble());
+        System.out.print("Enter the strength of the superhero as a decimal number. From 1 - 10000: ");
+        boolean legalStrength = controller.setStrength(parseAsDouble());
+        while (!legalStrength) {
+            System.out.print("Enter the strength of the superhero as a decimal number. From 1 - 10000: ");
+            legalStrength = controller.setStrength(parseAsDouble());
+        }
 
         System.out.println("Edit stored:\n");
-        System.out.println(superhero + "\n");
+        System.out.println(controller.getCurrentHeroToString() + "\n");
     }
 
     public int parseAsInt() {
@@ -228,6 +255,29 @@ public class UserInterface {
             }
         }
     }
+    // TODO: 04/11/2022 check this
+    public int readInt(){
+        while (!SCANNER.hasNextInt()){
+            String wrongInput = SCANNER.nextLine();
+            System.out.println("\n" + wrongInput + " is not a whole number. Please try again.\n");
+        }
+        int rightInput = SCANNER.nextInt();
+        SCANNER.nextLine();
+        return rightInput;
+    }
+
+    // TODO: 04/11/2022 check this
+    public double readDouble(){
+        while (!SCANNER.hasNextDouble()){
+            String wrongInput = SCANNER.nextLine();
+            System.out.println("\n" + wrongInput + " is not a decimal number. Please try again.\n");
+        }
+        int rightInput = SCANNER.nextInt();
+        SCANNER.nextLine();
+        return rightInput;
+    }
+
+
 
     public double parseAsDouble() {
         while (true) {
@@ -245,10 +295,6 @@ public class UserInterface {
             System.out.println("You Typed: " + answer + "\nPlease type 'yes' or 'no'");
             answer = SCANNER.nextLine();
         }
-        if (answer.equalsIgnoreCase("yes")) {
-            return true;
-        } else {
-            return false;
-        }
+        return answer.equalsIgnoreCase("yes");
     }
 }

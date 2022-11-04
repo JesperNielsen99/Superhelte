@@ -12,10 +12,10 @@ public class FileHandler {
     public FileHandler() {
     }
 
-    public void checkSuperheroDatabase() {
+    public void newFileIfFileNotFound() {
         try {
-            File myObj = new File(FILENAME);
-            myObj.createNewFile();
+            File newFile = new File(FILENAME);
+            newFile.createNewFile();
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -26,7 +26,7 @@ public class FileHandler {
         try {
             File file = new File(FILENAME);
             Scanner heroScanner = new Scanner(file).useLocale(Locale.US);
-            ArrayList<String> heroData = new ArrayList<String>();
+            ArrayList<String> heroData = new ArrayList<>();
             while (heroScanner.hasNextLine()) {
                 heroData.add(heroScanner.nextLine());
             }
@@ -34,14 +34,15 @@ public class FileHandler {
             return heroData;
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
+            newFileIfFileNotFound();
             e.printStackTrace();
             return null;
         }
     }
 
     public void writeSuperheroDatabase(String heroData) {
-        //if(database.getHeroes() != readSuperheroDatabase(FILENAME)) {
         try {
+            newFileIfFileNotFound(); // In case you delete the file as you run the program.
             FileWriter Writer = new FileWriter(FILENAME);
             Writer.write(heroData);
             Writer.close();
@@ -50,6 +51,5 @@ public class FileHandler {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        //}
     }
 }
