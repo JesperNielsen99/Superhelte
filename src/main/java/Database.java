@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 public class Database {
@@ -11,7 +10,7 @@ public class Database {
     public Database() {
         fileHandler = new FileHandler();
         checkSuperheroDatabase();
-        readSuperheroDatabase();
+        readSuperheroDatabaseFromString();
     }
 
     public void addSuperhero(Superhero superhero) {
@@ -30,17 +29,10 @@ public class Database {
         fileHandler.checkSuperheroDatabase();
     }
 
-    public void readSuperheroDatabase() {
-        // TODO: 03/11/2022 evt. gøre at databasen skaber Superheroes istedet for at FileHandler gør det.
-        for (Superhero superhero : fileHandler.readSuperheroDatabase()) {
-            superheroes.add(superhero);
-        }
-    }
-
     public void readSuperheroDatabaseFromString() {
-        String rawHeroData = fileHandler.readSuperheroDatabaseToString();
-        for (int i = 0; i % 6 == 0; i++) {
-            String[] heroDataArray = fileHandler.readSuperheroDatabaseToString().split(";", 6);
+        ArrayList<String> rawHeroData = fileHandler.readSuperheroDatabase();
+        for (int i = 0; i < rawHeroData.size(); i++) {
+            String[] heroDataArray = rawHeroData.get(i).split(";");
             Superhero superhero = new Superhero();
             superhero.setHeroName(heroDataArray[0]);
             superhero.setPrivateName(heroDataArray[1]);
@@ -52,11 +44,6 @@ public class Database {
         }
     }
 
-    public void writeSuperheroDatabase() {
-        // TODO: 03/11/2022 evt. giv en string så den ikke har kendskab til superheroes.
-        fileHandler.writeSuperheroDatabase(superheroes);
-    }
-
     public void writeSuperheroDatabaseFromString() {
         StringBuilder heroData = new StringBuilder();
         for (Superhero superhero : superheroes) {
@@ -64,7 +51,7 @@ public class Database {
                     superhero.getSuperPower() + ";" + superhero.getIsHuman() + ";" +
                     superhero.getCreationYear() + ";" + superhero.getStrength() + "\n");
         }
-        fileHandler.writeSuperheroDatabaseFromString(heroData.toString());
+        fileHandler.writeSuperheroDatabase(heroData.toString());
     }
 
     public void searchHeroName(String heroName) {
@@ -76,7 +63,6 @@ public class Database {
                     System.out.println(superhero);
                 }
             }
-            //System.out.printf("%s heroes were found with this search.\n\n", searchResult.size());
         }
     }
 
@@ -89,7 +75,6 @@ public class Database {
                     System.out.println(superhero);
                 }
             }
-            //System.out.printf("%s heroes were found with this search.\n\n", searchResult.size());
         }
     }
 
@@ -104,7 +89,7 @@ public class Database {
     public String searchResultToString() {
         StringBuilder searchResultArray = new StringBuilder();
         for (int i = 0; i < searchResult.size(); i++) {
-            searchResultArray.append(i+1 + ": " + searchResult.get(i));
+            searchResultArray.append(i+1 + ")\n" + searchResult.get(i));
         }
         searchResultArray.append(String.format("\n%s superheroes matched this search.\n", searchResult.size()));
         return searchResultArray.toString();
@@ -112,7 +97,7 @@ public class Database {
 
     public void updateCheck() {
         //if (file != array) {
-            writeSuperheroDatabase();
+            writeSuperheroDatabaseFromString();
             System.out.println("Update Complete.");
         //}
     }

@@ -27,17 +27,19 @@ public class UserInterface {
                     switch (options) {
                         case "1" -> creationLoop();
                         case "2" -> System.out.println(controller.getDatabase());
-                        case "3" -> searchForHero();
+                        case "3" -> System.out.println(searchForHero());
                         case "4" -> {
-                            searchForHero();
+                            String heroesPresented = searchForHero();
+                            System.out.println(heroesPresented);
                             if (controller.getSearchResultSize() > 0) {
                                 System.out.print("Type the number of the hero to edit: ");
                                 int heroIndex = parseAsInt() - 1;
-                                // TODO: 03/11/2022 Fails when out of bounds. Make Hamza fix 
-                                while (heroIndex < controller.getSearchResultSize()) {
-                                    heroIndex = parseAsInt();
-                                    controller.setCurrentHero(heroIndex);
+                                while (heroIndex > controller.getSearchResultSize()-1) {
+                                    System.out.println(heroesPresented);
+                                    System.out.print("Type the number of the hero to edit: ");
+                                    heroIndex = parseAsInt()-1;
                                 }
+                                controller.setCurrentHero(heroIndex);
                                 System.out.printf("You are currently editing: %s\n", controller.getCurrentHeroName());
                                 boolean exit = true;
                                 while (exit) {
@@ -160,7 +162,7 @@ public class UserInterface {
         return true;
     }
 
-    public void searchForHero() {
+    public String searchForHero() {
         System.out.println("""
                 1. Search by superhero name.
                 2. Search by private name of the superhero.
@@ -173,23 +175,24 @@ public class UserInterface {
                 System.out.println("Enter the superhero name to search for.");
                 options = SCANNER.next();
                 controller.searchHeroName(options);
-                System.out.println(controller.searchResultToString());
+                return controller.searchResultToString();
             }
             case 2 -> {
                 System.out.println("Enter the private name of the superhero to search for.");
                 options = SCANNER.next();
                 controller.searchPrivateName(options);
                 controller.searchResultToString();
-                System.out.println(controller.searchResultToString());
+                return controller.searchResultToString();
             }
             case 8 -> {
-                System.out.println("Returning to the main menu.\n");
+                return "Returning to the main menu.\n";
             }
             case 9 -> {
                 System.exit(0);
+                return "Exiting system.";
             }
             default -> {
-                System.out.println("This input was not valid please try again.\n");
+                return "This input was not valid please try again.\n";
             }
         }
     }
