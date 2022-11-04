@@ -8,7 +8,6 @@ public class UserInterface {
 
     public UserInterface() {
         controller = new Controller();
-        menuOptions();
     }
 
     public void menuOptions() {
@@ -32,14 +31,18 @@ public class UserInterface {
                             String heroesPresented = searchForHero();
                             System.out.println(heroesPresented);
                             if (controller.getSearchResultSize() > 0) {
-                                System.out.print("Type the number of the hero to edit: ");
-                                int heroIndex = parseAsInt() - 1;
-                                while (heroIndex > controller.getSearchResultSize()-1) {
-                                    System.out.println(heroesPresented);
+                                if (controller.getSearchResultSize() > 1) {
                                     System.out.print("Type the number of the hero to edit: ");
-                                    heroIndex = parseAsInt()-1;
+                                    int heroIndex = parseAsInt() - 1;
+                                    while (heroIndex > controller.getSearchResultSize() - 1) {
+                                        System.out.println(heroesPresented);
+                                        System.out.print("Type the number of the hero to edit: ");
+                                        heroIndex = parseAsInt() - 1;
+                                    }
+                                    controller.setCurrentHero(heroIndex);
+                                } else {
+                                    controller.setCurrentHero(0);
                                 }
-                                controller.setCurrentHero(heroIndex);
                                 System.out.printf("You are currently editing: %s\n", controller.getCurrentHeroName());
                                 boolean exit = true;
                                 while (exit) {
@@ -103,7 +106,7 @@ public class UserInterface {
                     controller.setCreationYear(parseAsInt());
                 }
                 case 5 -> {
-                    System.out.printf("Is %s human? (Yes/No): ", controller.getCurrentHeroIsHuman());
+                    System.out.printf("Is %s human? (Yes/No): ", controller.getCurrentHeroName());
                     controller.setIsHuman(readIsHuman());
                 }
                 case 6 -> {
@@ -166,8 +169,7 @@ public class UserInterface {
         System.out.println("""
                 1. Search by superhero name.
                 2. Search by private name of the superhero.
-                8. Don't search anyway.
-                9. Exit the program.""");
+                9. Don't search anyway.""");
 
         String options = null;
         switch (parseAsInt()) {
@@ -184,12 +186,8 @@ public class UserInterface {
                 controller.searchResultToString();
                 return controller.searchResultToString();
             }
-            case 8 -> {
-                return "Returning to the main menu.\n";
-            }
             case 9 -> {
-                System.exit(0);
-                return "Exiting system.";
+                return "Returning to the main menu.\n";
             }
             default -> {
                 return "This input was not valid please try again.\n";

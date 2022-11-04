@@ -31,13 +31,11 @@ class DatabaseTest {
         assertEquals(database.getSize(), 2);
     }
 
-    @Test
-    void searchHeroName() {
-        assertEquals(database.searchHeroName("Superman").get(0).getHeroName(), "Superman");
-    }
-
-    @Test
-    void searchPrivateName() {
-        assertEquals(database.searchPrivateName("Bruce Wayne").get(0).getHeroName(), "Batman");
-    }
+//    @Test
+//    void searchHeroName() {
+//    }
+//
+//    @Test
+//    void searchPrivateName() {
+//    }
 }

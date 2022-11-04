@@ -60,7 +60,6 @@ public class Database {
             for (Superhero superhero : superheroes) {
                 if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
                     searchResult.add(superhero);
-                    System.out.println(superhero);
                 }
             }
         }
@@ -72,7 +71,6 @@ public class Database {
             for (Superhero superhero : superheroes) {
                 if (superhero.getPrivateName().toLowerCase().contains(privateName.toLowerCase())) {
                     searchResult.add(superhero);
-                    System.out.println(superhero);
                 }
             }
         }
