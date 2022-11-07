@@ -1,4 +1,9 @@
+package datahandling;
+
 import java.util.*;
+
+import comparators.*;
+import superhero.Superhero;
 
 public class Database {
     private final ArrayList<Superhero> superheroes = new ArrayList<>();
@@ -144,6 +149,45 @@ public class Database {
         return searchResult.size();
     }
 
+    public void sortByHeroName() {
+        Collections.sort(superheroes, new HeroNameComparator());
+    }
+
+    public void sortByPrivateName() {
+        Collections.sort(superheroes, new PrivateNameComparator());
+    }
+
+    public void sortByHumanity() {
+        Collections.sort(superheroes, new IsHumanComparator().reversed());
+    }
+
+    public void sortByCreationYear() {
+        Collections.sort(superheroes, new CreationYearComparator());
+    }
+
+    public void sortByStrength() {
+        Collections.sort(superheroes, new StrengthComparator());
+    }
+
+    public void sortByHeroNameReversed() {
+        Collections.sort(superheroes, new StrengthComparator().reversed());
+    }
+
+    public void searchPrivateNameReversed() {
+        Collections.sort(superheroes, new PrivateNameComparator().reversed());
+    }
+
+    public void setIsHumanReversed() {
+        Collections.sort(superheroes, new IsHumanComparator().reversed());
+    }
+
+    public void setCreationYearReversed() {
+        Collections.sort(superheroes, new CreationYearComparator().reversed());
+    }
+
+    public void sortByStrengthReversed() {
+        Collections.sort(superheroes, new StrengthComparator().reversed());
+    }
 
     public String toString() {
         if (superheroes.size() > 0) {

@@ -1,3 +1,5 @@
+package datahandling;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -42,11 +44,17 @@ public class FileHandler {
 
     public void writeSuperheroDatabase(String heroData) {
         try {
-            newFileIfFileNotFound(); // In case you delete the file as you run the program.
-            FileWriter Writer = new FileWriter(FILENAME);
-            Writer.write(heroData);
-            Writer.close();
-            System.out.println("Successfully saved to file.");
+            StringBuilder heroDataCheck = new StringBuilder();
+            for (String string : readSuperheroDatabase()) {
+                heroDataCheck.append(string).append("\n");
+            }
+            if(!heroData.equals(heroDataCheck.toString())) {
+                newFileIfFileNotFound(); // In case you delete the file as you run the program.
+                FileWriter Writer = new FileWriter(FILENAME);
+                Writer.write(heroData);
+                Writer.close();
+                System.out.println("Successfully saved to file.");
+            }
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();

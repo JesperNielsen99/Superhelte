@@ -1,3 +1,5 @@
+package superhero;
+
 import java.time.LocalDateTime;
 
 
@@ -20,7 +22,11 @@ public class Superhero {
 
     //Set methods
     public void setHeroName(String heroName) {
-        if (!heroName.isEmpty()) { this.heroName = heroName; }
+        if (!heroName.isEmpty()) {
+            this.heroName = heroName;
+        } else {
+            this.heroName = "";
+        }
     }
 
     public void setPrivateName(String privateName) { this.privateName = privateName;}
@@ -47,7 +53,11 @@ public class Superhero {
     }
 
     public void addSuperPower(String superPower) {
-        this.superPower += superPower;
+        if (!superPower.isEmpty()) {
+            this.superPower += superPower;
+        } else {
+            this.superPower = "";
+        }
     }
 
     public String printIsHuman() {
@@ -61,11 +71,11 @@ public class Superhero {
     public String toString() {
         String printSuperhero;
         // TODO: 04/11/2022 Check this HAMZA!!!!!! 
-        if (heroName != null) {
-            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nSuperhero is human: %s\nStrength: %s\n==============================\n",
+        if (!heroName.equals("")) {
+            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nsuperhero.Superhero is human: %s\nStrength: %s\n==============================\n",
                     heroName, privateName, superPower,creationYear,printIsHuman(),strength);
         } else {
-            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nSuperhero is human: %s\nStrength: %s\n=============================\n",
+            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nsuperhero.Superhero is human: %s\nStrength: %s\n=============================\n",
                     privateName, superPower,creationYear,printIsHuman(),strength);
         }
         return printSuperhero;

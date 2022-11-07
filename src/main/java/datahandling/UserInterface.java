@@ -1,3 +1,5 @@
+package datahandling;
+
 import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Scanner;
@@ -25,7 +27,7 @@ public class UserInterface {
                     String options = SCANNER.next();
                     switch (options) {
                         case "1" -> createSuperhero();
-                        case "2" -> System.out.println(controller.getDatabase());
+                        case "2" -> viewAndSortSuperheroes();
                         case "3" -> {
                             System.out.println(searchForHero());
                             controller.endSearch();
@@ -113,7 +115,11 @@ public class UserInterface {
                 }
                 case 4 -> {
                     System.out.printf("Enter a new creation year for %s: ", controller.getCurrentHeroName());
-                    controller.setCreationYear(parseAsInt());
+                    boolean legalYear = controller.setCreationYear(parseAsInt());
+                    while (!legalYear) {
+                        System.out.printf("Invalid creation year Enter a year before %s: ", LocalDateTime.now().getYear());
+                        legalYear = controller.setCreationYear(parseAsInt());
+                    }
                 }
                 case 5 -> {
                     System.out.printf("Is %s human? (Yes/No): ", controller.getCurrentHeroName());
@@ -121,9 +127,11 @@ public class UserInterface {
                 }
                 case 6 -> {
                     System.out.printf("Enter a new strength for %s: ", controller.getCurrentHeroName());
-                    double newStrength = parseAsDouble();
-                    controller.setStrength(newStrength);
-
+                    boolean legalStrength = controller.setStrength(parseAsDouble());
+                    while (!legalStrength) {
+                        System.out.print("Enter the strength of the superhero as a decimal number. From 1 - 10000: ");
+                        legalStrength = controller.setStrength(parseAsDouble());
+                    }
                 }
                 case 7 -> {
                     System.out.println("Type new data and press ENTER. If you do not wish to edit data press Enter.");
@@ -152,7 +160,11 @@ public class UserInterface {
                     System.out.println("Creation Year: " + controller.getCurrentHeroCreationYear());
                     String newCreationYear = SCANNER.nextLine();
                     if (!newCreationYear.isEmpty()) {
-                        controller.setCreationYear(Integer.parseInt(newCreationYear));
+                        boolean legalYear = controller.setCreationYear(Integer.parseInt(newCreationYear));;
+                        while (!legalYear) {
+                            System.out.printf("Invalid creation year Enter a year before %s: ", LocalDateTime.now().getYear());
+                            legalYear = controller.setCreationYear(parseAsInt());
+                        }
                         System.out.println(controller.getCurrentHeroCreationYear());
                     }
 
@@ -166,7 +178,11 @@ public class UserInterface {
                     System.out.println("Strength: " + controller.getCurrentHeroStrength());
                     String newStrength = SCANNER.nextLine();
                     if (!newStrength.isEmpty()) {
-                        controller.setStrength(Double.parseDouble(newStrength));
+                        boolean legalStrength = controller.setStrength(Double.parseDouble(newStrength));
+                        while (!legalStrength) {
+                            System.out.print("Enter the strength of the superhero as a decimal number. From 1 - 10000: ");
+                            legalStrength = controller.setStrength(parseAsDouble());
+                        }
                         System.out.println(controller.getCurrentHeroStrength());
                     }
                 }
@@ -212,6 +228,164 @@ public class UserInterface {
         }
     }
 
+    public void viewAndSortSuperheroes() {
+        System.out.println("""
+                1. Don't sort.
+                2. Sort by the name of the superheroes.
+                3. Sort by another attribute.
+                4. Sort by two attributes.
+                9. Don't view anyway.""");
+        switch (parseAsInt()) {
+            case 1 -> {
+                System.out.println(controller.getDatabase());
+            }
+            case 2 -> {
+                System.out.println("Choose your sorting type.");
+                System.out.println("""
+                    1. A-Z/1-infinity.
+                    2. Z-A/infinity-1.""");
+                switch (parseAsInt()) {
+                    case 1 -> {
+                        controller.sortByHeroName();
+                    }
+                    case 2 -> {
+                        controller.sortByHeroNameReversed();
+                    }
+                }
+                System.out.println(controller.getDatabase());
+            }
+            case 3 -> {
+                System.out.println("Choose your sorting type.");
+                System.out.println("""
+                    1. A-Z/1-infinity.
+                    2. Z-A/infinity-1.""");
+                switch (parseAsInt()) {
+                    case 1 -> {
+                        System.out.println("""
+                            1. Private name.
+                            2. Humanity.
+                            3. Creation year.
+                            4. Strength.
+                            9. Don't sort this way.""");
+                        switch (parseAsInt()) {
+                            case 1 -> {
+                                controller.sortByPrivateName();
+                            }
+                            case 2 -> {
+                                controller.sortByHumanity();
+                            }
+                            case 3 -> {
+                                controller.sortByCreationYear();
+                            }
+                            case 4 -> {
+                                controller.sortByStrength();
+                            }
+                            case 9 -> {
+                            }
+                        }
+                    }
+                    case 2 -> {
+                        System.out.println("""
+                            1. Private name.
+                            2. Humanity.
+                            3. Creation year.
+                            4. Strength.
+                            9. Don't sort this way.""");
+                        switch (parseAsInt()) {
+                            case 1 -> {
+                                controller.sortByPrivateNameReversed();
+                            }
+                            case 2 -> {
+                                controller.sortByHumanityReversed();
+                            }
+                            case 3 -> {
+                                controller.sortByCreationYearReversed();
+                            }
+                            case 4 -> {
+                                controller.sortByStrengthReversed();
+                            }
+                            case 9 -> {
+                            }
+                        }
+                    }
+                }
+                System.out.println(controller.getDatabase());
+            }
+            // TODO: 07/11/2022 figure out how to do the 2 attribute sort.
+            /*case 4 -> {
+                System.out.println("Select which sorting preference to you.");
+                System.out.println("""
+                    1. A-Z/1-infinity.
+                    2. Z-A/infinity-1.""");
+                switch (parseAsInt()) {
+                    case 1 -> {
+                        System.out.println("Select the most important attribute to search for.");
+                        System.out.println("""
+                                1. Hero name.
+                                2. Private name.
+                                3. Humanity.
+                                4. Creation year.
+                                5. Strength.
+                                9. Don't sort this way.""");
+                        switch (parseAsInt()) {
+                            case 1 -> {
+                                controller.sortByPrivateName();
+                            }
+                            case 2 -> {
+                                controller.sortByHumanity();
+                            }
+                            case 3 -> {
+                                controller.sortByCreationYear();
+                            }
+                            case 4 -> {
+                                controller.sortByStrength();
+                            }
+                            case 9 -> {
+                            }
+                        }
+                    }
+                    case 2 -> {
+                        System.out.println("Select the most important attribute to search for.");
+                        System.out.println("""
+                                1. Hero name.
+                                2. Private name.
+                                3. Humanity.
+                                4. Creation year.
+                                5. Strength.
+                                9. Don't sort this way.""");
+                        switch (parseAsInt()) {
+                            case 1 -> {
+                                controller.sortByHeroNameReversed();
+                            }
+                            case 2 -> {
+                                controller.sortByPrivateNameReversed();
+                            }
+                            case 3 -> {
+                                controller.sortByHumanityReversed();
+                            }
+                            case 4 -> {
+                                controller.sortByCreationYearReversed();
+                            }
+                            case 5 -> {
+                                controller.sortByStrengthReversed();
+                            }
+                            case 9 -> {
+                            }
+                        }
+                    }
+                }
+                System.out.println(controller.getDatabase());
+            }*/
+            case 9 -> {
+
+            }
+            default -> {
+                System.out.println("This input was not valid please try again.\n");
+            }
+        }
+    }
+
+
     public void createSuperhero() {
         controller.createSuperhero();
         System.out.print("Enter the hero name of the superhero if there is any. Else press the enter key: ");
@@ -249,14 +423,16 @@ public class UserInterface {
     public int parseAsInt() {
         while (true) {
             try {
-                return Integer.parseInt(SCANNER.next());
+                int parsedInt = Integer.parseInt(SCANNER.next());
+                SCANNER.nextLine();
+                return parsedInt;
             } catch (NumberFormatException e) {
                 System.out.println("You did not enter a number. Please re-enter it.");
             }
         }
     }
     // TODO: 04/11/2022 check this
-    public int readInt(){
+    /*public int readInt(){
         while (!SCANNER.hasNextInt()){
             String wrongInput = SCANNER.nextLine();
             System.out.println("\n" + wrongInput + " is not a whole number. Please try again.\n");
@@ -275,14 +451,14 @@ public class UserInterface {
         int rightInput = SCANNER.nextInt();
         SCANNER.nextLine();
         return rightInput;
-    }
-
-
+    }*/
 
     public double parseAsDouble() {
         while (true) {
             try {
-                return Double.parseDouble(SCANNER.next());
+                double parsedDouble = Double.parseDouble(SCANNER.next());
+                SCANNER.nextLine();
+                return parsedDouble;
             } catch (NumberFormatException e) {
                 System.out.println("You did not enter a number. Please re-enter it.");
             }

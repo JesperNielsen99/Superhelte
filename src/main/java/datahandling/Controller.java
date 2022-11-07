@@ -1,3 +1,5 @@
+package datahandling;
+
 public class Controller {
     private final Database database;
     private final FileHandler fileHandler;
@@ -91,6 +93,46 @@ public class Controller {
 
     public void writeFileToFileHandler() {
         fileHandler.writeSuperheroDatabase(database.writeSuperheroDatabaseFromString());
+    }
+
+    public void sortByHeroName() {
+        database.sortByHeroName();
+    }
+
+    public void sortByPrivateName() {
+        database.sortByPrivateName();
+    }
+
+    public void sortByHumanity() {
+        database.sortByHumanity();
+    }
+
+    public void sortByCreationYear() {
+        database.sortByCreationYear();
+    }
+
+    public void sortByStrength() {
+        database.sortByStrength();
+    }
+
+    public void sortByHeroNameReversed() {
+        database.sortByHeroNameReversed();
+    }
+
+    public void sortByPrivateNameReversed() {
+        database.searchPrivateNameReversed();
+    }
+
+    public void sortByHumanityReversed() {
+        database.setIsHumanReversed();
+    }
+
+    public void sortByCreationYearReversed() {
+        database.setCreationYearReversed();
+    }
+
+    public void sortByStrengthReversed() {
+        database.sortByStrengthReversed();
     }
 
     public Database getDatabase() {

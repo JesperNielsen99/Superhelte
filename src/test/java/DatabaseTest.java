@@ -1,5 +1,7 @@
+import datahandling.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import superhero.Superhero;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,9 +12,9 @@ class DatabaseTest {
     @BeforeEach
     public void setup() {
         database = new Database();
-        /*Superhero superhero1 = new Superhero("Superman", "Clark kent", "Kryptonian");
-        Superhero superhero2 = new Superhero("Spiderman", "Peter Parker", "Human");
-        Superhero superhero3 = new Superhero("Batman", "Bruce Wayne", "Human");
+        /*superhero.Superhero superhero1 = new superhero.Superhero("Superman", "Clark kent", "Kryptonian");
+        superhero.Superhero superhero2 = new superhero.Superhero("Spiderman", "Peter Parker", "Human");
+        superhero.Superhero superhero3 = new superhero.Superhero("Batman", "Bruce Wayne", "Human");
         database.getHeroes().add(superhero1);
         database.getHeroes().add(superhero2);
         database.getHeroes().add(superhero3);*/
