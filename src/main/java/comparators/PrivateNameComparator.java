@@ -1,0 +1,13 @@
+package comparators;
+
+import superhero.Superhero;
+
+import java.util.Comparator;
+
+public class PrivateNameComparator implements Comparator<Superhero> {
+
+    @Override
+    public int compare(Superhero s1, Superhero s2) {
+        return s1.getPrivateName().compareTo(s2.getPrivateName());
+    }
+}
