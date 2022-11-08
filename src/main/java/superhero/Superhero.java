@@ -70,7 +70,6 @@ public class Superhero {
 
     public String toString() {
         String printSuperhero;
-        // TODO: 04/11/2022 Check this HAMZA!!!!!! 
         if (!heroName.equals("")) {
             printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nsuperhero.Superhero is human: %s\nStrength: %s\n==============================\n",
                     heroName, privateName, superPower,creationYear,printIsHuman(),strength);

@@ -4,28 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f091092d-a92b-4a54-adf4-ee7271705216" name="Changes" comment="Finished implementing the single responsibility principle for FileHandler.java">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comparators/AttributeComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comparators/HeroNameComparator.java" afterDir="false" />
+    <list default="true" id="f091092d-a92b-4a54-adf4-ee7271705216" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/Superheroes 2.0 - Class Diagram.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" afterDir="false" />
+    </list>
+    <list id="abe34476-c1de-49be-86d3-fc28019a86ec" name="Changes by jeper" comment="">
       <change beforePath="$PROJECT_DIR$/Heroes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Heroes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/SuperPowerComparator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/UserInterface.java" afterDir="false" />
     </list>
-    <list id="abe34476-c1de-49be-86d3-fc28019a86ec" name="Changes by jeper" comment="" />
-    <list id="706133f1-ba66-446d-95d7-100db2cf6a05" name="Changes by Nikolai Aamand" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/comparators/CreationYearComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comparators/IsHumanComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comparators/PrivateNameComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comparators/StrengthComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comparators/SuperPowerComparator.java" afterDir="false" />
-    </list>
+    <list id="706133f1-ba66-446d-95d7-100db2cf6a05" name="Changes by Nikolai Aamand" comment="" />
     <list id="e979b3f7-87bb-4648-8a2d-c76def4709a7" name="Changes by T.Lund" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +46,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -98,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667550130129</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <created>1667911140180</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667911140180</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,9 +115,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Refactor and edit all funktion" />
     <MESSAGE value="Finished implementing the single responsibility principle for FileHandler.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing the single responsibility principle for FileHandler.java" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

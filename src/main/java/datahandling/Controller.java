@@ -1,5 +1,7 @@
 package datahandling;
 
+import java.util.Comparator;
+
 public class Controller {
     private final Database database;
     private final FileHandler fileHandler;
@@ -115,6 +117,10 @@ public class Controller {
         database.sortByStrength();
     }
 
+    public void sortByTwoAttributes(Comparator primaryComparator, Comparator secondaryComparator) {
+        database.sortByTwoAttributes(primaryComparator, secondaryComparator);
+    }
+
     public void sortByHeroNameReversed() {
         database.sortByHeroNameReversed();
     }
@@ -124,11 +130,11 @@ public class Controller {
     }
 
     public void sortByHumanityReversed() {
-        database.setIsHumanReversed();
+        database.sortIsHumanReversed();
     }
 
     public void sortByCreationYearReversed() {
-        database.setCreationYearReversed();
+        database.sortCreationYearReversed();
     }
 
     public void sortByStrengthReversed() {
