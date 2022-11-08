@@ -177,16 +177,20 @@ public class Database {
         Collections.sort(superheroes, new PrivateNameComparator().reversed());
     }
 
-    public void setIsHumanReversed() {
+    public void sortIsHumanReversed() {
         Collections.sort(superheroes, new IsHumanComparator().reversed());
     }
 
-    public void setCreationYearReversed() {
+    public void sortCreationYearReversed() {
         Collections.sort(superheroes, new CreationYearComparator().reversed());
     }
 
     public void sortByStrengthReversed() {
         Collections.sort(superheroes, new StrengthComparator().reversed());
+    }
+
+    public void sortByTwoAttributes(Comparator primaryComparator, Comparator secondaryComparator) {
+        Collections.sort(superheroes, primaryComparator.thenComparing(secondaryComparator));
     }
 
     public String toString() {

@@ -1,6 +1,10 @@
 package datahandling;
 
+import comparators.*;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -242,8 +246,8 @@ public class UserInterface {
             case 2 -> {
                 System.out.println("Choose your sorting type.");
                 System.out.println("""
-                    1. A-Z/1-infinity.
-                    2. Z-A/infinity-1.""");
+                    1. A-Z / 0-9.
+                    2. Z-A / 9-0.""");
                 switch (parseAsInt()) {
                     case 1 -> {
                         controller.sortByHeroName();
@@ -257,8 +261,8 @@ public class UserInterface {
             case 3 -> {
                 System.out.println("Choose your sorting type.");
                 System.out.println("""
-                    1. A-Z/1-infinity.
-                    2. Z-A/infinity-1.""");
+                    1. A-Z / 0-9.
+                    2. Z-A / 9-0.""");
                 switch (parseAsInt()) {
                     case 1 -> {
                         System.out.println("""
@@ -311,78 +315,63 @@ public class UserInterface {
                 }
                 System.out.println(controller.getDatabase());
             }
-            // TODO: 07/11/2022 figure out how to do the 2 attribute sort.
-            /*case 4 -> {
-                System.out.println("Select which sorting preference to you.");
+
+            case 4 -> {
+                Comparator primaryComparator;
+                Comparator secondaryComparator = null;
+                ArrayList<Comparator> comparators = new ArrayList<>();
+                comparators.add(new HeroNameComparator());
+                comparators.add(new PrivateNameComparator());
+                comparators.add(new IsHumanComparator());
+                comparators.add(new CreationYearComparator());
+                comparators.add(new StrengthComparator());
+                System.out.println("Select which primary sort to use.");
+                primaryComparator = setComparator(comparators);
+                System.out.println("Select which secondary sort to use.");
+                while ((secondaryComparator == null || secondaryComparator == primaryComparator)) {
+                    secondaryComparator = setComparator(comparators);
+                    if (secondaryComparator == primaryComparator) {
+                        System.out.println("You can't sort by the same parameters.\nPlease select another secondary sort.");
+                    }
+                }
                 System.out.println("""
-                    1. A-Z/1-infinity.
-                    2. Z-A/infinity-1.""");
+                        1. A-Z / 0-9.
+                        2. Z-A / 9-0""");
                 switch (parseAsInt()) {
                     case 1 -> {
-                        System.out.println("Select the most important attribute to search for.");
-                        System.out.println("""
-                                1. Hero name.
-                                2. Private name.
-                                3. Humanity.
-                                4. Creation year.
-                                5. Strength.
-                                9. Don't sort this way.""");
-                        switch (parseAsInt()) {
-                            case 1 -> {
-                                controller.sortByPrivateName();
-                            }
-                            case 2 -> {
-                                controller.sortByHumanity();
-                            }
-                            case 3 -> {
-                                controller.sortByCreationYear();
-                            }
-                            case 4 -> {
-                                controller.sortByStrength();
-                            }
-                            case 9 -> {
-                            }
-                        }
+                        controller.sortByTwoAttributes(primaryComparator, secondaryComparator);
                     }
                     case 2 -> {
-                        System.out.println("Select the most important attribute to search for.");
-                        System.out.println("""
-                                1. Hero name.
-                                2. Private name.
-                                3. Humanity.
-                                4. Creation year.
-                                5. Strength.
-                                9. Don't sort this way.""");
-                        switch (parseAsInt()) {
-                            case 1 -> {
-                                controller.sortByHeroNameReversed();
-                            }
-                            case 2 -> {
-                                controller.sortByPrivateNameReversed();
-                            }
-                            case 3 -> {
-                                controller.sortByHumanityReversed();
-                            }
-                            case 4 -> {
-                                controller.sortByCreationYearReversed();
-                            }
-                            case 5 -> {
-                                controller.sortByStrengthReversed();
-                            }
-                            case 9 -> {
-                            }
-                        }
+                        controller.sortByTwoAttributes(primaryComparator.reversed(), secondaryComparator.reversed());
+                    }
+                    default -> {
+
                     }
                 }
                 System.out.println(controller.getDatabase());
-            }*/
+            }
             case 9 -> {
-
+                break;
             }
             default -> {
                 System.out.println("This input was not valid please try again.\n");
             }
         }
+    }
+
+    public Comparator setComparator(ArrayList<Comparator> comparators) {
+        System.out.println("""
+                    1. Hero Name.
+                    2. Private name.
+                    3. Humanity.
+                    4. Creation year.
+                    5. Strength.""");
+        int index = parseAsInt();
+        while (index > comparators.size()) {
+            System.out.println("Invalid number. \nPlease select a number from 1-5.");
+            index = parseAsInt();
+        }
+        return comparators.get(index - 1);
     }
 
 
@@ -431,27 +420,6 @@ public class UserInterface {
             }
         }
     }
-    // TODO: 04/11/2022 check this
-    /*public int readInt(){
-        while (!SCANNER.hasNextInt()){
-            String wrongInput = SCANNER.nextLine();
-            System.out.println("\n" + wrongInput + " is not a whole number. Please try again.\n");
-        }
-        int rightInput = SCANNER.nextInt();
-        SCANNER.nextLine();
-        return rightInput;
-    }
-
-    // TODO: 04/11/2022 check this
-    public double readDouble(){
-        while (!SCANNER.hasNextDouble()){
-            String wrongInput = SCANNER.nextLine();
-            System.out.println("\n" + wrongInput + " is not a decimal number. Please try again.\n");
-        }
-        int rightInput = SCANNER.nextInt();
-        SCANNER.nextLine();
-        return rightInput;
-    }*/
 
     public double parseAsDouble() {
         while (true) {
