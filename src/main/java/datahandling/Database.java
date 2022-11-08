@@ -169,6 +169,14 @@ public class Database {
         Collections.sort(superheroes, new StrengthComparator());
     }
 
+    public void testSortByStrength(Comparator comp) {
+        if (comp == null) {
+            Collections.sort(superheroes, new StrengthComparator());
+        } else {
+            Collections.sort(superheroes, new StrengthComparator().thenComparing(comp));
+        }
+    }
+
     public void sortByHeroNameReversed() {
         Collections.sort(superheroes, new StrengthComparator().reversed());
     }

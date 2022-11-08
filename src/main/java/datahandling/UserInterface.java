@@ -242,8 +242,8 @@ public class UserInterface {
             case 2 -> {
                 System.out.println("Choose your sorting type.");
                 System.out.println("""
-                    1. A-Z/1-infinity.
-                    2. Z-A/infinity-1.""");
+                    1. A-Z.
+                    2. Z-A.""");
                 switch (parseAsInt()) {
                     case 1 -> {
                         controller.sortByHeroName();
