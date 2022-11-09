@@ -106,7 +106,7 @@ public class Database {
     }
 
     public void setSuperPower(String newSuperPower) {
-        currentHero.addSuperPower(newSuperPower);
+        currentHero.setSuperPower(newSuperPower);
     }
 
     public boolean setCreationYear(int newCreationYear) {
