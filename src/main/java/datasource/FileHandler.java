@@ -1,4 +1,4 @@
-package datahandling;
+package datasource;
 
 import java.io.File;
 import java.io.FileNotFoundException;

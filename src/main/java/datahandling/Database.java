@@ -149,6 +149,10 @@ public class Database {
         return searchResult.size();
     }
 
+    public ArrayList<Superhero> getSuperheroes() {
+        return superheroes;
+    }
+
     public void sortByHeroName() {
         Collections.sort(superheroes, new HeroNameComparator());
     }
@@ -189,8 +193,18 @@ public class Database {
         Collections.sort(superheroes, new StrengthComparator().reversed());
     }
 
-    public void sortByTwoAttributes(Comparator primaryComparator, Comparator secondaryComparator) {
-        Collections.sort(superheroes, primaryComparator.thenComparing(secondaryComparator));
+    public void sortByTwoAttributesTest(int primaryIndex, int secondaryIndex, boolean reversed) {
+        ArrayList<Comparator> comparators = new ArrayList<>();
+        comparators.add(new HeroNameComparator());
+        comparators.add(new PrivateNameComparator());
+        comparators.add(new IsHumanComparator());
+        comparators.add(new CreationYearComparator());
+        comparators.add(new StrengthComparator());
+        if (!reversed) {
+            Collections.sort(superheroes, comparators.get(primaryIndex).thenComparing(comparators.get(secondaryIndex)));
+        } else {
+            Collections.sort(superheroes, comparators.get(primaryIndex).reversed().thenComparing(comparators.get(secondaryIndex).reversed()));
+        }
     }
 
     public String toString() {

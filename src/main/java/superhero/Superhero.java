@@ -12,6 +12,18 @@ public class Superhero {
     private int creationYear;
     private double strength;
 
+
+    public Superhero() {}
+
+    public Superhero(String heroName, String privateName, String superPower, boolean isHuman, int creationYear, double strength) {
+        this.heroName = heroName;
+        this.privateName = privateName;
+        this.superPower = superPower;
+        this.isHuman = isHuman;
+        this.creationYear = creationYear;
+        this.strength = strength;
+    }
+
     //Get methods
     public String getHeroName() { return heroName; }
     public String getPrivateName() { return privateName; }
@@ -54,7 +66,7 @@ public class Superhero {
 
     public void addSuperPower(String superPower) {
         if (!superPower.isEmpty()) {
-            this.superPower += superPower;
+            this.superPower += ", " + superPower;
         } else {
             this.superPower = "";
         }
@@ -71,10 +83,10 @@ public class Superhero {
     public String toString() {
         String printSuperhero;
         if (!heroName.equals("")) {
-            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nsuperhero.Superhero is human: %s\nStrength: %s\n==============================\n",
+            printSuperhero = String.format("Superhero Name: %s\nPrivate name: %s\nSuperpowers: %s\nCreation year: %s\nSuperhero is human: %s\nStrength: %s\n==============================\n",
                     heroName, privateName, superPower,creationYear,printIsHuman(),strength);
         } else {
-            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nsuperhero.Superhero is human: %s\nStrength: %s\n=============================\n",
+            printSuperhero = String.format("Private name: %s\nSuperpowers: %s\nCreation year: %s\nSuperhero is human: %s\nStrength: %s\n=============================\n",
                     privateName, superPower,creationYear,printIsHuman(),strength);
         }
         return printSuperhero;

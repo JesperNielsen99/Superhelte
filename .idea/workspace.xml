@@ -5,19 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f091092d-a92b-4a54-adf4-ee7271705216" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/Superheroes 2.0 - Class Diagram.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" afterDir="false" />
-    </list>
-    <list id="abe34476-c1de-49be-86d3-fc28019a86ec" name="Changes by jeper" comment="">
       <change beforePath="$PROJECT_DIR$/Heroes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Heroes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/SuperPowerComparator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/AttributeComparator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/UserInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java" afterDir="false" />
     </list>
-    <list id="706133f1-ba66-446d-95d7-100db2cf6a05" name="Changes by Nikolai Aamand" comment="" />
-    <list id="e979b3f7-87bb-4648-8a2d-c76def4709a7" name="Changes by T.Lund" comment="" />
+    <list id="abe34476-c1de-49be-86d3-fc28019a86ec" name="Changes by jeper" comment="" />
+    <list id="1c6dd3a7-6d83-4a30-997a-0dec1a012deb" name="Changes by Nikolai Aamand" comment="" />
+    <list id="1c3c68fa-d179-4b8f-a240-2f93e63e08b7" name="Changes by T.Lund" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,11 +33,32 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="2" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="5" end1="5" start2="7" end2="9" changelist="1c3c68fa-d179-4b8f-a240-2f93e63e08b7" />
+        <range start1="14" end1="20" start2="18" end2="24" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="25" end1="25" start2="29" end2="30" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="26" end1="27" start2="31" end2="32" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="33" end1="33" start2="38" end2="40" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="35" end1="35" start2="42" end2="97" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/datahandling/Database.java">
+      <ranges>
+        <range start1="108" end1="109" start2="108" end2="109" changelist="1c3c68fa-d179-4b8f-a240-2f93e63e08b7" />
+        <range start1="150" end1="150" start2="150" end2="154" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="191" end1="193" start2="195" end2="207" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,12 +78,26 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_opened_file_path": "C:/Users/jeper/Documents/Datamatiker/Programmering/1. Semester/Kageopskrift",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="datahandling" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="datasource" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
