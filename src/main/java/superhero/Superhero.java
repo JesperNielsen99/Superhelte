@@ -83,4 +83,8 @@ public class Superhero {
         }
         return printSuperhero;
     }
+
+    public String toStringTest() {
+        return heroName + ";" + privateName + ";" + superPower + ";" + isHuman + ";" + creationYear + ";" + strength + '\n';
+    }
 }

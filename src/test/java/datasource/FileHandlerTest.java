@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FileHandlerTest {
     FileHandler fileHandler;
-    ArrayList<Superhero> superheroes;
+    Superhero superhero1;
+    Superhero superhero2;
 
     @BeforeEach
     public void setup() {

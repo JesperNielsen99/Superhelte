@@ -283,23 +283,17 @@ public class UserInterface {
                                 5. Strength.
                                 9. Don't sort anyway.""");
                         switch (parseAsInt()) {
-                            case 1 -> {
-                                controller.sortByHeroNameReversed();
-                            }
-                            case 2 -> {
-                                controller.sortByPrivateNameReversed();
-                            }
-                            case 3 -> {
-                                controller.sortByHumanityReversed();
-                            }
-                            case 4 -> {
-                                controller.sortByCreationYearReversed();
-                            }
-                            case 5 -> {
-                                controller.sortByStrengthReversed();
-                            }
-                            case 9 -> {
-                            }
+                            case 1 -> controller.sortByHeroNameReversed();
+
+                            case 2 -> controller.sortByPrivateNameReversed();
+
+                            case 3 -> controller.sortByHumanityReversed();
+
+                            case 4 -> controller.sortByCreationYearReversed();
+
+                            case 5 -> controller.sortByStrengthReversed();
+
+                            case 9 -> {}
                         }
                     }
                 }
@@ -319,23 +313,18 @@ public class UserInterface {
                         1. A-Z / 0-9.
                         2. Z-A / 9-0""");
                 switch (parseAsInt()) {
-                    case 1 -> {
-                        controller.sortByTwoAttributes(primaryIndex, secondaryIndex, false);
-                    }
-                    case 2 -> {
-                        controller.sortByTwoAttributes(primaryIndex, secondaryIndex, true);
-                    }
-                    default -> {
+                    case 1 -> controller.sortByTwoAttributes(primaryIndex, secondaryIndex, false);
 
-                    }
+                    case 2 -> controller.sortByTwoAttributes(primaryIndex, secondaryIndex, true);
+
+                    default -> { }
                 }
                 System.out.println(controller.getDatabase());
             }
             case 9 -> {
             }
-            default -> {
-                System.out.println("This input was not valid please try again.\n");
-            }
+            default -> System.out.println("This input was not valid please try again.\n");
+
         }
     }
 
