@@ -1,7 +1,6 @@
 package datahandling;
 
 import java.util.*;
-
 import comparators.*;
 import superhero.Superhero;
 
@@ -154,43 +153,43 @@ public class Database {
     }
 
     public void sortByHeroName() {
-        Collections.sort(superheroes, new HeroNameComparator());
+        superheroes.sort(new HeroNameComparator());
     }
 
     public void sortByPrivateName() {
-        Collections.sort(superheroes, new PrivateNameComparator());
+        superheroes.sort(new PrivateNameComparator());
     }
 
     public void sortByHumanity() {
-        Collections.sort(superheroes, new IsHumanComparator().reversed());
+        superheroes.sort(new IsHumanComparator().reversed());
     }
 
     public void sortByCreationYear() {
-        Collections.sort(superheroes, new CreationYearComparator());
+        superheroes.sort(new CreationYearComparator());
     }
 
     public void sortByStrength() {
-        Collections.sort(superheroes, new StrengthComparator());
+        superheroes.sort(new StrengthComparator());
     }
 
     public void sortByHeroNameReversed() {
-        Collections.sort(superheroes, new StrengthComparator().reversed());
+        superheroes.sort(new StrengthComparator().reversed());
     }
 
     public void searchPrivateNameReversed() {
-        Collections.sort(superheroes, new PrivateNameComparator().reversed());
+        superheroes.sort(new PrivateNameComparator().reversed());
     }
 
     public void sortIsHumanReversed() {
-        Collections.sort(superheroes, new IsHumanComparator().reversed());
+        superheroes.sort(new IsHumanComparator().reversed());
     }
 
     public void sortCreationYearReversed() {
-        Collections.sort(superheroes, new CreationYearComparator().reversed());
+        superheroes.sort(new CreationYearComparator().reversed());
     }
 
     public void sortByStrengthReversed() {
-        Collections.sort(superheroes, new StrengthComparator().reversed());
+        superheroes.sort(new StrengthComparator().reversed());
     }
 
     public void sortByTwoAttributesTest(int primaryIndex, int secondaryIndex, boolean reversed) {
@@ -201,9 +200,9 @@ public class Database {
         comparators.add(new CreationYearComparator());
         comparators.add(new StrengthComparator());
         if (!reversed) {
-            Collections.sort(superheroes, comparators.get(primaryIndex).thenComparing(comparators.get(secondaryIndex)));
+            superheroes.sort(comparators.get(primaryIndex).thenComparing(comparators.get(secondaryIndex)));
         } else {
-            Collections.sort(superheroes, comparators.get(primaryIndex).reversed().thenComparing(comparators.get(secondaryIndex).reversed()));
+            superheroes.sort(comparators.get(primaryIndex).reversed().thenComparing(comparators.get(secondaryIndex).reversed()));
         }
     }
 

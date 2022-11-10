@@ -64,14 +64,6 @@ public class Superhero {
         return false;
     }
 
-    public void addSuperPower(String superPower) {
-        if (!superPower.isEmpty()) {
-            this.superPower += ", " + superPower;
-        } else {
-            this.superPower = "";
-        }
-    }
-
     public String printIsHuman() {
         if (getIsHuman()) {
             return "Yes";

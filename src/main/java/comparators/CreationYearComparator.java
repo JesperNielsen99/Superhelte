@@ -1,7 +1,6 @@
 package comparators;
 
 import superhero.Superhero;
-
 import java.util.Comparator;
 
 public class CreationYearComparator implements Comparator<Superhero> {

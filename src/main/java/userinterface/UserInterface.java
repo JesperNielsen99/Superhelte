@@ -167,7 +167,7 @@ public class UserInterface {
                 String newCreationYear = SCANNER.nextLine();
                 if (!newCreationYear.isEmpty()) {
                     boolean legalYear = controller.setCreationYear(Integer.parseInt(newCreationYear));
-                    ;
+
                     while (!legalYear) {
                         System.out.printf("Invalid creation year Enter a year before %s: ", LocalDateTime.now().getYear());
                         legalYear = controller.setCreationYear(parseAsInt());
@@ -244,9 +244,8 @@ public class UserInterface {
                 3. Sort by two attributes.
                 9. Don't view anyway.""");
         switch (parseAsInt()) {
-            case 1 -> {
-                System.out.println(controller.getDatabase());
-            }
+            case 1 -> System.out.println(controller.getDatabase());
+
             case 2 -> {
                 System.out.println("Choose your sorting type.");
                 System.out.println("""
@@ -262,23 +261,17 @@ public class UserInterface {
                                 5. Strength.
                                 9. Don't sort anyway.""");
                         switch (parseAsInt()) {
-                            case 1 -> {
-                                controller.sortByHeroName();
-                            }
-                            case 2 -> {
-                                controller.sortByPrivateName();
-                            }
-                            case 3 -> {
-                                controller.sortByHumanity();
-                            }
-                            case 4 -> {
-                                controller.sortByCreationYear();
-                            }
-                            case 5 -> {
-                                controller.sortByStrength();
-                            }
-                            case 9 -> {
-                            }
+                            case 1 -> controller.sortByHeroName();
+
+                            case 2 -> controller.sortByPrivateName();
+
+                            case 3 -> controller.sortByHumanity();
+
+                            case 4 -> controller.sortByCreationYear();
+
+                            case 5 -> controller.sortByStrength();
+
+                            case 9 -> {}
                         }
                     }
                     case 2 -> {
