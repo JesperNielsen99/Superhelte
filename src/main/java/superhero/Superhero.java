@@ -8,8 +8,8 @@ public class Superhero {
     private String heroName;
     private String privateName;
     private String superPower;
-    private boolean isHuman;
     private int creationYear;
+    private boolean isHuman;
     private double strength;
 
 

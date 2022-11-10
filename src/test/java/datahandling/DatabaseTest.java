@@ -1,11 +1,11 @@
 package datahandling;
 
-import datahandling.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import superhero.Superhero;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,9 +16,10 @@ class DatabaseTest {
     @BeforeEach
     public void setup() {
         database = new Database();
+        database.getSuperheroes().clear();
         Superhero superhero1 = new Superhero("lightning", "ibermand", "super speed", false, 2002, 99.93);
         Superhero superhero2 = new Superhero("inferno", "klaus", "super hot", true, 1930, 190.1);
-        Superhero superhero3 = new Superhero("autostyler", "hans", "mekaniker", true, 1600, 55.15);
+        Superhero superhero3 = new Superhero("autostyler", "hans", "mechanic", true, 1600, 55.15);
         database.addSuperhero(superhero1);
         database.addSuperhero(superhero2);
         database.addSuperhero(superhero3);

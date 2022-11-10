@@ -192,7 +192,7 @@ public class Database {
         superheroes.sort(new StrengthComparator().reversed());
     }
 
-    public void sortByTwoAttributesTest(int primaryIndex, int secondaryIndex, boolean reversed) {
+    public void sortByTwoAttributes(int primaryIndex, int secondaryIndex, boolean reversed) {
         ArrayList<Comparator> comparators = new ArrayList<>();
         comparators.add(new HeroNameComparator());
         comparators.add(new PrivateNameComparator());
