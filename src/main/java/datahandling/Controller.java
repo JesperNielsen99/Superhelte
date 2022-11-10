@@ -94,7 +94,7 @@ public class Controller {
     }
 
     public void writeFileToFileHandler() {
-        fileHandler.writeSuperheroDatabase(database.writeSuperheroDatabaseFromString());
+        fileHandler.writeSuperheroDatabase(database.writeSuperheroDatabaseToString());
     }
 
     public void sortByHeroName() {
@@ -118,7 +118,7 @@ public class Controller {
     }
 
     public void sortByTwoAttributes(int primaryIndex, int secondaryIndex, boolean reversed) {
-        database.sortByTwoAttributesTest(primaryIndex, secondaryIndex, reversed);
+        database.sortByTwoAttributes(primaryIndex, secondaryIndex, reversed);
     }
 
     public void sortByHeroNameReversed() {

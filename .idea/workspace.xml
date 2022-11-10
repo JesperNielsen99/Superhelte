@@ -4,26 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f091092d-a92b-4a54-adf4-ee7271705216" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java" afterDir="false" />
+    <list default="true" id="f091092d-a92b-4a54-adf4-ee7271705216" name="Changes" comment="user story 14">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Heroes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Heroes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/AttributeComparator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/UserInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java" afterDir="false" />
     </list>
-    <list id="abe34476-c1de-49be-86d3-fc28019a86ec" name="Changes by jeper" comment="" />
-    <list id="1c6dd3a7-6d83-4a30-997a-0dec1a012deb" name="Changes by Nikolai Aamand" comment="" />
-    <list id="1c3c68fa-d179-4b8f-a240-2f93e63e08b7" name="Changes by T.Lund" comment="">
+    <list id="acf789d2-82c5-43a0-bbb5-58010da3fce6" name="Changes by hamza" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/CreationYearComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comparators/CreationYearComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/HeroNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comparators/HeroNameComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/IsHumanComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comparators/IsHumanComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/PrivateNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comparators/PrivateNameComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comparators/StrengthComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comparators/StrengthComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java" afterDir="false" />
     </list>
+    <list id="abe34476-c1de-49be-86d3-fc28019a86ec" name="Changes by jeper" comment="user story 14">
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java" afterDir="false" />
+    </list>
+    <list id="706133f1-ba66-446d-95d7-100db2cf6a05" name="Changes by Nikolai Aamand" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/superhero/Superhero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java" afterDir="false" />
+    </list>
+    <list id="e979b3f7-87bb-4648-8a2d-c76def4709a7" name="Changes by T.Lund" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,22 +53,73 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java">
+    <file path="$PROJECT_DIR$/src/test/java/datasource/FileHandlerTest.java">
       <ranges>
-        <range start1="0" end1="0" start2="0" end2="2" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
-        <range start1="5" end1="5" start2="7" end2="9" changelist="1c3c68fa-d179-4b8f-a240-2f93e63e08b7" />
-        <range start1="14" end1="20" start2="18" end2="24" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
-        <range start1="25" end1="25" start2="29" end2="30" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
-        <range start1="26" end1="27" start2="31" end2="32" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
-        <range start1="33" end1="33" start2="38" end2="40" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
-        <range start1="35" end1="35" start2="42" end2="97" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="6" end1="8" start2="6" end2="8" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="9" end1="10" start2="9" end2="11" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="13" end1="14" start2="14" end2="14" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="15" end1="16" start2="15" end2="17" changelist="706133f1-ba66-446d-95d7-100db2cf6a05" />
+        <range start1="20" end1="25" start2="21" end2="23" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="29" end1="30" start2="27" end2="37" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="34" end1="36" start2="41" end2="65" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/main/java/datahandling/Database.java">
       <ranges>
-        <range start1="108" end1="109" start2="108" end2="109" changelist="1c3c68fa-d179-4b8f-a240-2f93e63e08b7" />
-        <range start1="150" end1="150" start2="150" end2="154" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
-        <range start1="191" end1="193" start2="195" end2="207" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="3" end1="4" start2="3" end2="3" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="37" end1="38" start2="36" end2="37" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+        <range start1="156" end1="157" start2="155" end2="156" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="160" end1="161" start2="159" end2="160" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="164" end1="165" start2="163" end2="164" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="168" end1="169" start2="167" end2="168" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="172" end1="173" start2="171" end2="172" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="176" end1="177" start2="175" end2="176" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="180" end1="181" start2="179" end2="180" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="184" end1="185" start2="183" end2="184" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="188" end1="189" start2="187" end2="188" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="192" end1="193" start2="191" end2="192" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="195" end1="196" start2="194" end2="195" changelist="abe34476-c1de-49be-86d3-fc28019a86ec" />
+        <range start1="203" end1="204" start2="202" end2="203" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="205" end1="206" start2="204" end2="205" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java">
+      <ranges>
+        <range start1="2" end1="3" start2="2" end2="2" changelist="abe34476-c1de-49be-86d3-fc28019a86ec" />
+        <range start1="8" end1="8" start2="7" end2="8" changelist="abe34476-c1de-49be-86d3-fc28019a86ec" />
+        <range start1="18" end1="18" start2="18" end2="19" changelist="abe34476-c1de-49be-86d3-fc28019a86ec" />
+        <range start1="20" end1="21" start2="21" end2="22" changelist="abe34476-c1de-49be-86d3-fc28019a86ec" />
+        <range start1="47" end1="49" start2="48" end2="52" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="50" end1="52" start2="53" end2="56" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="58" end1="60" start2="62" end2="67" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="61" end1="63" start2="68" end2="71" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="69" end1="71" start2="77" end2="81" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="72" end1="74" start2="82" end2="85" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="80" end1="82" start2="91" end2="95" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="83" end1="85" start2="96" end2="99" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="91" end1="93" start2="105" end2="109" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="94" end1="96" start2="110" end2="113" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="97" end1="104" start2="114" end2="210" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/userinterface/UserInterface.java">
+      <ranges>
+        <range start1="169" end1="170" start2="169" end2="170" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="246" end1="249" start2="246" end2="248" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="264" end1="281" start2="263" end2="274" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="292" end1="309" start2="285" end2="296" changelist="706133f1-ba66-446d-95d7-100db2cf6a05" />
+        <range start1="328" end1="335" start2="315" end2="316" changelist="706133f1-ba66-446d-95d7-100db2cf6a05" />
+        <range start1="336" end1="337" start2="317" end2="320" changelist="706133f1-ba66-446d-95d7-100db2cf6a05" />
+        <range start1="342" end1="345" start2="325" end2="327" changelist="706133f1-ba66-446d-95d7-100db2cf6a05" />
+        <range start1="429" end1="429" start2="411" end2="420" changelist="f091092d-a92b-4a54-adf4-ee7271705216" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/superhero/Superhero.java">
+      <ranges>
+        <range start1="10" end1="10" start2="10" end2="11" changelist="abe34476-c1de-49be-86d3-fc28019a86ec" />
+        <range start1="11" end1="12" start2="12" end2="12" changelist="abe34476-c1de-49be-86d3-fc28019a86ec" />
+        <range start1="65" end1="73" start2="65" end2="65" changelist="acf789d2-82c5-43a0-bbb5-58010da3fce6" />
+        <range start1="93" end1="93" start2="85" end2="89" changelist="706133f1-ba66-446d-95d7-100db2cf6a05" />
       </ranges>
     </file>
   </component>
@@ -71,22 +134,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/jeper/Documents/Datamatiker/Programmering/1. Semester/Kageopskrift",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jeper/Documents/Datamatiker/Programmering/1. Semester/Kageopskrift&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -97,6 +160,96 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="datasource" />
     </key>
+  </component>
+  <component name="RunManager" selected="JUnit.FileHandlerTest.readSuperheroDatabase">
+    <configuration name="DatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Superheroes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="datahandling.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="datahandling" />
+      <option name="MAIN_CLASS_NAME" value="datahandling.DatabaseTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatabaseTest.readSuperheroDatabasetoString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Superheroes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="datahandling.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="datahandling" />
+      <option name="MAIN_CLASS_NAME" value="datahandling.DatabaseTest" />
+      <option name="METHOD_NAME" value="readSuperheroDatabasetoString" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatabaseTest.writeSuperheroDatabaseFromStringPrecise" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Superheroes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="datahandling.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="datahandling" />
+      <option name="MAIN_CLASS_NAME" value="datahandling.DatabaseTest" />
+      <option name="METHOD_NAME" value="writeSuperheroDatabaseFromStringPrecise" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileHandlerTest.readSuperheroDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Superheroes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="datasource.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="datasource" />
+      <option name="MAIN_CLASS_NAME" value="datasource.FileHandlerTest" />
+      <option name="METHOD_NAME" value="readSuperheroDatabase" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileHandlerTest.writeSuperheroDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Superheroes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="datasource.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="datasource" />
+      <option name="MAIN_CLASS_NAME" value="datasource.FileHandlerTest" />
+      <option name="METHOD_NAME" value="writeSuperheroDatabase" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FileHandlerTest.readSuperheroDatabase" />
+        <item itemvalue="JUnit.FileHandlerTest.writeSuperheroDatabase" />
+        <item itemvalue="JUnit.DatabaseTest" />
+        <item itemvalue="JUnit.DatabaseTest.readSuperheroDatabasetoString" />
+        <item itemvalue="JUnit.DatabaseTest.writeSuperheroDatabaseFromStringPrecise" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -163,6 +316,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/datahandling/DatabaseTest.java</url>
+          <line>210</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="readSuperheroDatabase()" />

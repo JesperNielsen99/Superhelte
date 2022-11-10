@@ -35,7 +35,7 @@ public class Database {
         }
     }
 
-    public String writeSuperheroDatabaseFromString() {
+    public String writeSuperheroDatabaseToString() {
         StringBuilder heroData = new StringBuilder();
         for (Superhero superhero : superheroes) {
             heroData.append(String.format("%s;%s;%s;%s;%s;%s", superhero.getHeroName(),

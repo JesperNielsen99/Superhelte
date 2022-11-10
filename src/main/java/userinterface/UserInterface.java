@@ -427,4 +427,13 @@ public class UserInterface {
         }
         return answer.equalsIgnoreCase("yes");
     }
+
+    public String readString(){
+        String string = SCANNER.nextLine();
+        while(string.contains(";")){
+            System.out.println("Input can not contain ';'. Please try again.");
+            string = SCANNER.nextLine();
+        }
+        return string;
+    }
 }
